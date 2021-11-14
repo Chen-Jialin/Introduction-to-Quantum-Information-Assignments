@@ -80,30 +80,6 @@
     空间 $H$ 中存在两组归一化态 $\{\lvert\psi_i\rangle\}$、$\{\lvert\tilde{\psi}_i\rangle\}$, 它们满足: $\forall i,j$, 有 $\langle\psi_i\vert\psi_j\rangle=\langle\tilde{\psi}_i\vert\tilde{\psi}_j\rangle$. 请证明, 则存在 $U$, 使得 $U\lvert\psi_i\rangle=\lvert\tilde{\psi}_i\rangle$, 并构造出该 $U$ 变换.
 \end{prob}
 \begin{sol}
-    % 我们可以先对 $\{\lvert\psi_i\rangle\}$ 进行 Gram-Schmidt 正交化得到一组正交归一态, 然后利用第 2 题的结论将这组正交归一态映射到 $\{\lvert\tilde{\psi}_i\rangle\}$ 上.
-
-    % 由于利用第 2 题的结论构造的 $U$ 是幺正算符, 而两个量子态的内积在幺正算符变换下保持不变, 因此能够满足 $\forall i,j$, 有 $\langle\psi_i\vert\psi_j\rangle=\langle\tilde{\psi}_i\vert\tilde{\psi}_j\rangle$. 具体构造步骤如下:
-
-    % 对 $\{\lvert\psi_i\rangle\}$ 进行 Gram-Schmidt 正交化得到正交归一态 $\{\lvert\psi_i'\rangle\}$:
-    % \begin{align}
-    %     \lvert\psi_i'\rangle=U_{\text{G-S}}\lvert\psi_i\rangle\equiv\left\{\begin{array}{ll}
-    %         \lvert\psi_1\rangle,&i=1\\
-    %         \frac{\lvert\psi_i\rangle-\sum_{j=1}^{i-1}\lvert\psi_i'\rangle\langle\psi_i'\vert\psi_i\rangle}{\abs{\lvert\psi_i\rangle-\sum_{j=1}^{i-1}\lvert\psi_i'\rangle\langle\psi_i'\vert\psi_i\rangle}},&i\geq 2
-    %     \end{array}\right.
-    % \end{align}
-    % 利用第 2 题中的结论, 构造
-    % \begin{align}
-    %     U=\sum_i\lvert\tilde{\psi}_i\rangle\langle\psi_i\rvert U_{\text{G-S}}^{\dagger}U_{\text{G-S}},
-    % \end{align}
-    % 使得
-    % \begin{align}
-    %     U\lvert\psi_i\rangle=\sum_j\lvert\tilde{\psi}_j\rangle\langle\psi_j\rvert U_{\text{G-S}}^{\dagger}U_{\text{G-S}}\lvert\psi_i\rangle=\sum_j\lvert\tilde{\psi}_j\rangle\langle\psi_j'\vert\psi_i'\rangle=\sum_j\delta_{ij}\lvert\tilde{\psi}_j\rangle=\lvert\tilde{\psi}_i\rangle,
-    % \end{align}
-    % 且满足
-    % \begin{align}
-    %     \notag\langle\tilde{\psi}_i\vert\tilde{\psi}_j\rangle=&\langle\psi_i\rvert U^{\dagger}U\lvert\psi_j\rangle=\sum_{m,n}\langle\psi_i\rvert U_{\text{G-S}}^{\dagger}U_{\text{G-S}}\lvert\psi_m\rangle\langle\tilde{\psi}_m\vert\tilde{\psi}_n\rangle\langle\psi_n\rvert U_{\text{G-S}}^{\dagger}U_{\text{G-S}}\lvert\psi_j\rangle\\
-    %     \notag=&\sum_{m,n}\langle\psi_i'\vert\psi_m'\rangle\langle\tilde{\psi}_m\vert\tilde{\psi}_n\rangle\langle\psi_n'\vert\psi_j'\rangle=\sum_{m,n}\delta_{im}\delta_{jn}\langle\tilde{\psi}_m\vert\tilde{\psi}_n\rangle=\langle\psi_i\vert\psi_j\rangle.
-    % \end{align}
     设
     \begin{align}
         U=\sum_{jk}a_{jk}\lvert\tilde{\psi}_j\rangle\langle\psi_k\rvert.

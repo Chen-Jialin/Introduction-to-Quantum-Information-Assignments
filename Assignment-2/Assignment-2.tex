@@ -1,5 +1,5 @@
 \documentclass{assignment}
-\ProjectInfos{量子信息导论}{PHYS5251P}{2021-2022 学年第一学期}{第二次作业}{截止日期：2021. . （周）}{陈稼霖}[https://github.com/Chen-Jialin]{SA21038052}
+\ProjectInfos{量子信息导论}{PHYS5251P}{2021-2022 学年第一学期}{第二次作业}{截止日期：2021. 11. 3（周三）}{陈稼霖}[https://github.com/Chen-Jialin]{SA21038052}
 
 \begin{document}
 \begin{probcontinued}{6}
@@ -10,41 +10,437 @@
     \end{itemize}
 \end{probcontinued}
 \begin{sol}
-    
+    \begin{itemize}
+        \item[i)] 设
+        \begin{align}
+            \lvert\psi\rangle=&\cos\frac{\theta_1}{2}\lvert 0\rangle+e^{i\varphi_1}\sin\frac{\theta_1}{2}\lvert 1\rangle,\\
+            \lvert\phi\rangle=&\cos\frac{\theta_2}{2}\lvert 0\rangle+e^{i\varphi_2}\sin\frac{\theta_2}{2}\lvert 1\rangle.
+        \end{align}
+        态 $\lvert\phi\rangle$ 相对于态 $\lvert\psi\rangle$ 的保真度为
+        \begin{align}
+            \notag F=&\abs{\langle\phi\vert\psi\rangle}^2=\abs{\left(\cos\frac{\theta_2}{2}\langle 0\rvert+e^{-i\varphi_2}\sin\frac{\theta_2}{2}\right)\left(\cos\frac{\theta_1}{2}\lvert 0\rangle+e^{i\varphi_1}\sin\frac{\theta_1}{2}\right)}^2\\
+            \notag=&\abs{\cos\frac{\theta_1}{2}\cos\frac{\theta_2}{2}+e^{i(\varphi_1-\varphi_2)}\sin\frac{\theta_1}{2}\sin\frac{\theta_2}{2}}^2\\
+            \notag=&\cos^2\frac{\theta_1}{2}\cos^2\frac{\theta_2}{2}+\sin^2\frac{\theta_1}{2}\sin^2\frac{\theta_2}{2}+2\cos(\varphi_1-\varphi_2)\sin\frac{\theta_1}{2}\cos\frac{\theta_1}{2}\sin\frac{\theta_2}{2}\cos\frac{\theta_2}{2}\\
+            \notag=&\left(\frac{1+\cos\theta_1}{2}\right)\left(\frac{1+\cos\theta_2}{2}\right)+\left(\frac{1-\cos\theta_1}{2}\right)\left(\frac{1-\cos\theta_2}{2}\right)+2\cos(\varphi_1-\varphi_2)\frac{1}{4}\sin\theta_1\sin\theta_2\\
+            \notag=&\frac{1}{2}(1+\cos\theta_1\cos\theta_2)+\frac{1}{2}\cos(\varphi_1-\varphi_2)\sin\theta_1\sin\theta_2.
+        \end{align}
+        平均保真度为
+        \begin{align}
+            \notag\bar{F}=&\langle\abs{\langle\phi\vert\psi\rangle}^2\rangle=\frac{1}{2}\int_0^{\pi}\sin\theta_2\,\mathrm{d}\theta_2\,\frac{1}{2\pi}\int_0^{2\pi}\mathrm{d}\varphi_2\,\abs{\langle\phi\vert\psi\rangle}^2\\
+            \notag=&\frac{1}{2}\int_0^{\pi}\sin\theta_2\,\mathrm{d}\theta_2\,\frac{1}{2\pi}\int_0^{2\pi}\mathrm{d}\varphi_2\,\frac{1}{2}(1+\cos\theta_1\cos\theta_2)\\
+            \notag=&\frac{1}{2}\int_0^{\pi}\sin\theta_2\,\mathrm{d}\theta_2\,\frac{1}{2}(1+\cos\theta_1\cos\theta_2)\\
+            =&\frac{1}{2}.
+        \end{align}
+        \item[ii)] 算符 $P_{\uparrow}$ 和 $P_{\downarrow}$ 可表为
+        \begin{align}
+            P_{\uparrow}=&\lvert 0\rangle\langle 0\rvert,\\
+            P_{\downarrow}=&\lvert 1\rangle\langle 1\rvert.
+        \end{align}
+        测量后系统被制备到
+        \begin{align}
+            \notag\rho=&P_{\uparrow}\langle\psi\rvert P_{\uparrow}\rvert\psi\rangle+P_{\downarrow}\langle\psi\rvert P_{\downarrow}\lvert\psi\rangle\\
+            \notag=&\lvert 0\rangle\langle 0\rvert\left(\cos\frac{\theta_1}{2}\langle 0\rvert+e^{-i\varphi_1}\sin\frac{\theta_1}{2}\langle 1\rvert\right)\lvert 0\rangle\langle 0\rvert\left(\cos\frac{\theta_1}{2}\lvert 0\rangle+e^{i\varphi_1}\sin\frac{\theta_1}{2}\lvert 1\rangle\right)\\
+            \notag&+\lvert 1\rangle\langle 1\rvert\left(\cos\frac{\theta_1}{2}\langle 0\rvert+e^{-i\varphi_1}\sin\frac{\theta_1}{2}\langle 1\rvert\right)\lvert 1\rangle\langle 1\rvert\left(\cos\frac{\theta_1}{2}\lvert 0\rangle+e^{i\varphi_1}\sin\frac{\theta_1}{2}\lvert 1\rangle\right)\\
+            =&\cos^2\frac{\theta_1}{2}\lvert 0\rangle\langle 0\rvert+\sin^2\frac{\theta_1}{2}\lvert 1\rangle\langle 1\rvert.
+        \end{align}
+        测量后的密度矩阵与原来的态 $\lvert\psi\rangle$ 的保真度为
+        \begin{align}
+            \notag\bar{F}=&\langle\psi\rvert\rho\lvert\psi\rangle=\left(\cos\frac{\theta_1}{2}\langle 0\rvert+e^{-i\varphi_1}\sin\frac{\theta_1}{2}\langle 1\rvert\right)\left(\cos^2\frac{\theta_1}{2}\lvert 0\rangle\langle 0\rvert+\sin^2\frac{\theta_1}{2}\lvert 1\rangle\langle 1\rvert\right)\left(\cos\frac{\theta_1}{2}\lvert 0\rangle+e^{i\varphi_1}\sin\frac{\theta_1}{2}\lvert 1\rangle\right)\\
+            =&\cos^4\frac{\theta_1}{2}+\sin^4\frac{\theta_1}{2}.
+        \end{align}
+        平均保证度为
+        \begin{align}
+            \bar{F}=&\langle\langle\psi\rvert\rho\lvert\psi\rangle\rangle=\frac{1}{2}\int_0^{\pi}\sin\theta_1\,\mathrm{d}\theta\,\frac{1}{2\pi}\int_0^{2\pi}\mathrm{d}\varphi\,\langle\psi\rvert\rho\lvert\psi\rangle\\
+            \notag=&\frac{1}{2}\int_0^{\pi}\sin\theta_1\,\mathrm{d}\theta_1\,\frac{1}{2\pi}\int_0^{2\pi}\mathrm{d}\varphi\,\left(\cos^4\frac{\theta_1}{2}+\sin^4\frac{\theta_1}{2}\right)\\
+            \notag=&\frac{1}{2}\int_0^{\pi}\sin\theta_1\,\mathrm{d}\theta_1\,\left(\cos^4\frac{\theta_1}{2}+\sin^4\frac{\theta_1}{2}\right)\\
+            \notag=&\frac{1}{2}\int_0^{\pi}\sin\theta_1\,\mathrm{d}\theta_1\,\left[\left(\frac{1+\cos\theta_1}{2}\right)^2+\left(\frac{1-\cos\theta_1}{2}\right)^2\right]\\
+            \notag=&\frac{1}{2}\int_0^{\pi}\sin\theta_1\,\mathrm{d}\theta_1\,\frac{1}{2}(1+\cos^2\theta_1)\\
+            \notag=&\frac{1}{4}\int_{-1}^1\mathrm{d}(\cos\theta_1)\,(1+2\cos^2\theta_1)\\
+            =&\frac{2}{3}.
+        \end{align}
+    \end{itemize}
 \end{sol}
 
 \begin{probcontinued}{7}
     $\lvert\psi_1\rangle=\lvert 0\rangle$, $\lvert\psi_2\rangle=-\frac{1}{2}\lvert 0\rangle+\frac{\sqrt{3}}{2}\lvert 1\rangle$, $\lvert\psi_3\rangle=-\frac{1}{2}\lvert 0\rangle-\frac{\sqrt{3}}{2}\lvert 1\rangle$. 现令 $F_i=\frac{2}{3}\lvert\psi_i\rangle\langle\psi_i\rvert$, 则 $\{F_a\}_{a=1,2,3}$ 构成二维空间中的 POVM. 现引入一个辅助的 qubit, 试在拓展空间中实施一个正交测量, 从而实现此 POVM.
 \end{probcontinued}
 \begin{sol}
-    
+    记欲实现 POVM 的子系统为 $A$, 引入辅助子系统 $B$, 本征基为 $\{\lvert 0\rangle_B,\lvert 1\rangle_B\}$, 令 $\rho_B=\lvert 0\rangle_B\langle 0\rvert$, 则拓展空间中的系统状态为
+    \begin{align}
+        \rho_{AB}=\rho_A\otimes\lvert 0\rangle_B\langle 0\rvert.
+    \end{align}
+    首先将该二维空间中的 POVM 拓展成三维空间中的正交测量, 即:
+    \begin{align}
+        \lvert\psi_1\rangle=&\lvert 0\rangle=\begin{pmatrix}
+            1\\
+            0
+        \end{pmatrix}&\longrightarrow&&\lvert u_1\rangle=&\begin{pmatrix}
+            \sqrt{\frac{2}{3}}\\
+            0\\
+            \sqrt{\frac{1}{3}}
+        \end{pmatrix},\\
+        \lvert\psi_2\rangle=&-\frac{1}{2}\lvert 0\rangle+\frac{\sqrt{3}}{2}\lvert 1\rangle=\begin{pmatrix}
+            -\frac{1}{2}\\
+            \frac{\sqrt{3}}{2}
+        \end{pmatrix}&\longrightarrow&&\lvert u_2\rangle=&\begin{pmatrix}
+            -\frac{1}{\sqrt{6}}\\
+            \frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{3}}
+        \end{pmatrix},\\
+        \lvert\psi_3\rangle=&-\frac{1}{2}\lvert 0\rangle-\frac{\sqrt{3}}{2}\lvert 1\rangle=\begin{pmatrix}
+            -\frac{1}{2}\\
+            -\frac{\sqrt{3}}{2}
+        \end{pmatrix}&\longrightarrow&&\lvert u_3\rangle=&\begin{pmatrix}
+            -\frac{1}{\sqrt{6}}\\
+            -\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{3}}
+        \end{pmatrix},
+    \end{align}
+    再将三维空间中的正交测量拓展至四维空间:
+    \begin{align}
+        \begin{pmatrix}
+            \lvert u_1\rangle&\lvert u_2\rangle&\lvert u_3\rangle
+        \end{pmatrix}=\begin{pmatrix}
+            \sqrt{\frac{2}{3}}&-\frac{1}{\sqrt{6}}&-\frac{1}{\sqrt{6}}\\
+            0&\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}
+        \end{pmatrix}\longrightarrow\begin{pmatrix}
+            \lvert\Phi_1\rangle_{AB}&\lvert\Phi_2\rangle_{AB}&\lvert\Phi_3\rangle_{AB}&\lvert\Phi_4\rangle_{AB}
+        \end{pmatrix}=\begin{pmatrix}
+            \sqrt{\frac{2}{3}}&-\frac{1}{\sqrt{6}}&-\frac{1}{\sqrt{6}}&0\\
+            0&\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0\\
+            \frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}&0\\
+            0&0&0&1
+        \end{pmatrix}
+    \end{align}
+    即
+    \begin{align}
+        \lvert\Phi_1\rangle_{AB}=&\sqrt{\frac{2}{3}}\lvert 0\rangle_A\lvert 0\rangle_B+\sqrt{\frac{1}{3}}\lvert 0\rangle_A\lvert 1\rangle_A,\\
+        \lvert\Phi_2\rangle_{AB}=&-\frac{1}{\sqrt{6}}\lvert 0\rangle_A\lvert 0\rangle_B+\frac{1}{\sqrt{2}}\lvert 1\rangle_A\lvert 0\rangle_B+\frac{1}{\sqrt{3}}\lvert 0\rangle_A\lvert 1\rangle_B,\\
+        \lvert\Phi_3\rangle_{AB}=&-\frac{1}{\sqrt{6}}\lvert 0\rangle_A\lvert 0\rangle_B-\frac{1}{\sqrt{2}}\lvert 1\rangle_A\lvert 0\rangle_B+\frac{1}{\sqrt{3}}\lvert 0\rangle_A\lvert 1\rangle_B,\\
+        \lvert\Phi_4\rangle_{AB}=&\lvert 1\rangle_A\lvert 1\rangle_B.
+    \end{align}
+    拓展空间中的正交测量为 $\{E_a=\lvert\Phi_a\rangle_{AB}\langle\Phi_a\rvert\}_{a=1,2,3,4}$.
+
+    我们可以来稍微验证一下, 首先 $\{\lvert\Phi_a\rangle_{AB}\}$ 构成拓展空间 $H_A\otimes H_B$ 中的一组正交归一基, 故 $\{E_a\}_{a=1,2,3,4}$ 是拓展空间 $H_A\otimes H_B$ 中的正交测量; 其次, 易证
+    \begin{align}
+        \tr(E_a\rho)=\tr_A(F_a\rho_A),\quad a=1,2,3,
+    \end{align}
+    因此, 在拓展空间中实施正交测量 $\{E_a\}_{a=1,2,3}$, 在子空间 $H_A$ 中等价于实施 POVM $\{F_a\}_{a=1,2,3}$.
+\end{sol}
+
+\begin{probcontinued}{1 补充习}
+    判定下列组合中, 纯态是否是相应混态的纯化态. 如果是, 求出其对应纯态的 Schmidt 分解形式; 如果不是, 是否存在单方的局域幺正操作, 将其变换成到相应混合量子态的纯化态?
+    \begin{itemize}
+        \item[(a)] $\{\rho=\frac{3}{4}\lvert 0\rangle\langle 0\rvert+\frac{1}{4}\lvert 1\rangle\langle 1\rvert,\lvert\psi\rangle=\frac{\sqrt{3}+1}{4}(\lvert 00\rangle+\lvert 11\rangle)+\frac{\sqrt{3}-1}{4}(\lvert 01\rangle+\lvert 10\rangle)\}$
+        \item[(b)] $\{\rho=\frac{3}{4}\lvert\phi^+\rangle\langle\phi^+\rvert+\frac{1}{16}I\otimes I,\lvert\psi\rangle=\frac{\sqrt{7}}{4}(\lvert 000\rangle+\lvert 010\rangle)+\frac{1}{4}(\lvert 101\rangle-\lvert 111\rangle)\}$
+    \end{itemize}
+\end{probcontinued}
+\begin{sol}
+    \begin{itemize}
+        \item[(a)] 将复合系统纯态中的两个 qubit 依次标号为 A, B. 复合系统纯态对应的密度矩阵为
+        \begin{align}
+            \rho_{AB}=\lvert\psi\rangle\langle\psi\rvert=\left[\frac{\sqrt{3}+1}{4}(\lvert 00\rangle+\lvert 11\rangle)+\frac{\sqrt{3}-1}{4}(\lvert 01\rangle+\lvert 10\rangle)\right]\left[\frac{\sqrt{3}+1}{4}(\langle 00\rvert+\langle 11\rvert)+\frac{\sqrt{3}-1}{4}(\langle 01\rvert+\langle 10\rvert)\right]
+        \end{align}
+        对其关于 A 求偏迹得
+        \begin{align}
+            \notag&\tr_A(\rho_{AB})=\tr_A(\lvert\psi\rangle\langle\psi\rvert)\\
+            \notag=&\sum_{i=0}^1{}_A\langle i\rvert\left[\frac{\sqrt{3}+1}{4}(\lvert 00\rangle+\lvert 11\rangle)+\frac{\sqrt{3}-1}{4}(\lvert 01\rangle+\lvert 10\rangle)\right]\left[\frac{\sqrt{3}+1}{4}(\langle 00\rvert+\langle 11\rvert)+\frac{\sqrt{3}-1}{4}(\langle 01\rvert+\langle 10\rvert)\right]\lvert i\rangle_A\\
+            =&\frac{1}{2}\lvert 0\rangle\langle 0\rvert+\frac{1}{4}\lvert 0\rangle\langle 1\rvert+\frac{1}{4}\lvert 1\rangle\langle 0\rvert+\frac{1}{2}\lvert 1\rangle\langle 1\rvert.
+        \end{align}
+        关于 B 求偏迹得
+        \begin{align}
+            \notag&\tr_B(\rho_{AB})=\tr_B(\lvert\psi\rangle\langle\psi\rvert)\\
+            \notag=&\sum_{i=0}^1{}_B\langle i\rvert\left[\frac{\sqrt{3}+1}{4}(\lvert 00\rangle+\lvert 11\rangle)+\frac{\sqrt{3}-1}{4}(\lvert 01\rangle+\lvert 10\rangle)\right]\left[\frac{\sqrt{3}+1}{4}(\langle 00\rvert+\langle 11\rvert)+\frac{\sqrt{3}-1}{4}(\langle 01\rvert+\langle 10\rvert)\right]\lvert i\rangle_B\\
+            =&\frac{1}{2}\lvert 0\rangle\langle 0\rvert+\frac{1}{4}\lvert 0\rangle\langle 1\rvert+\frac{1}{4}\lvert 1\rangle\langle 0\rvert+\frac{1}{2}\lvert 1\rangle\langle 1\rvert,
+        \end{align}
+        $\tr_A(\rho_{AB})\neq\rho$, $\tr_B(\rho_{AB})\neq\rho$, 故 $\lvert\psi\rangle$ \uline{不是} $\rho$ 的纯化态.
+
+        %  首先对纯态 $\lvert\psi\rangle$ 做 Schmidt 分解:
+        % \begin{align}
+        %     \notag\lvert\psi\rangle=&\frac{1}{2}\left(\frac{1}{\sqrt{2}}\lvert 0\rangle-\frac{1}{\sqrt{2}}\lvert 1\rangle\right)\otimes\left(\frac{1}{\sqrt{2}}\lvert 0\rangle+\frac{1}{\sqrt{2}}\lvert 1\rangle\right)+\frac{\sqrt{3}}{2}\left(\frac{1}{\sqrt{2}}\lvert 0\rangle+\frac{1}{\sqrt{2}}\lvert 1\rangle\right)\otimes\left(\frac{1}{\sqrt{2}}\lvert 0\rangle+\frac{1}{\sqrt{2}}\lvert 1\rangle\right)\\
+        %     =&\sum_{i=0}^1\lambda_i\lvert\psi_1\rangle_A\otimes\lvert\psi_2\rangle_B,
+        % \end{align}
+        % 其中
+        % \begin{align}
+        %     \lambda_1=&\frac{1}{2},&\lvert\psi_1\rangle_A=&\frac{1}{\sqrt{2}}(\lvert 0\rangle-\lvert 1\rangle),&\lvert\psi_1\rangle_B=&\frac{1}{\sqrt{2}}(\lvert 0\rangle-\lvert 1\rangle),\\
+        %     \lambda_2=&\frac{\sqrt{3}}{2},&\lvert\psi_2\rangle_A=&\frac{1}{\sqrt{2}}(\lvert 0\rangle+\lvert 1\rangle),&\lvert\psi_2\rangle_B=&\frac{1}{\sqrt{2}}(\lvert 0\rangle+\lvert 1\rangle).
+        % \end{align}
+        % 设对 B 的局域幺正操作 $I_A\otimes U_B$, 将其作用于纯态 $\lvert\psi\rangle$ 上后, 再对 B 求偏迹, 有
+        % \begin{align}
+        %     \notag&\tr_B((I_A\otimes U_B)\lvert\psi\rangle\langle\psi\rvert(I_A\otimes U_B)^{\dagger})\\
+        %     \notag=&\tr_B\left((I_A\otimes U_B)\left(\sum_{i=0}^1\lambda_i\lvert\psi_i\rangle_A\lvert\psi_i\rangle_B\right)\left(\sum_{j=0}^1\lambda_j^*{}_A\langle\psi_i\rvert_B\langle\psi_i\rvert\right)(I_A\otimes U_B^{-1})\right)\\
+        %     \notag=&\tr_B\left(\sum_{i,j=0}^1\lambda_i\lambda_j^*(I_A\lvert\psi_i\rangle_A\langle\psi_j\rvert I_A)\otimes(U_B\lvert\psi_i\rangle_B\langle\psi_j\rvert U^{-1})\right)\\
+        %     \notag=&\tr_B\left(\sum_{i,j=0}^1\lambda_i\lambda_j^*(I_A\lvert\psi_i\rangle_A\langle\psi_j\rvert I_A)\otimes(U^{-1}U_B\lvert\psi_i\rangle_B\langle\psi_j\rvert)\right)\\
+        %     \notag=&\tr_B\left(\sum_{i,j=0}^1\lambda_i\lambda_j^*(I_A\lvert\psi_i\rangle_A\langle\psi_j\rvert I_A)\otimes(\lvert\psi_i\rangle_B\langle\psi_j\rvert)\right)\\
+        %     \notag=&\tr_B\left(\left(\sum_{i=0}^1\lambda_i\lvert\psi_i\rangle_A\lvert\psi_i\rangle_B\right)\left(\sum_{j=0}^1\lambda_j^*{}_A\langle\psi_i\rvert_B\langle\psi_i\rvert\right)\right)\\
+        %     \notag=&\tr_B(\lvert\psi\rangle\langle\psi\rvert)\neq\rho,
+        % \end{align}
+        % 故对 B 的幺正操作, 无法将纯态 $\lvert\psi\rangle$ 变换成混合态 $\rho$ 的纯化态.\\
+        设对 A 的局域幺正操作 $U_A\otimes I_B$, 将其作用于纯态 $\lvert\psi\rangle$ 上后, 再对 B 求偏迹, 有
+        \begin{align}
+            \notag&\tr_B((U_A\otimes I_B)\rho_{AB}(U_A\otimes I_B)^{\dagger})\\
+            =&\tr_B((U_A\otimes I_B)\rho_{AB}(U_A^{-1}\otimes I_B)\\
+            =&U_A\tr_B(\rho_{AB})U_A^{-1}.
+        \end{align}
+        注意到 $\rho$ 为对角阵而 $\tr_B(\rho_{AB})$ 具有与 $\rho$ 相同的本征值: $\frac{3}{4}$, $\frac{1}{4}$, $\tr_B(\rho_{AB})$ 的本征矢为 $\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1\\
+            1
+        \end{pmatrix}$, $\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1\\
+            -1
+        \end{pmatrix}$, 故可由令
+        \begin{align}
+            U_A=\frac{1}{\sqrt{2}}\begin{pmatrix}
+                1&1\\
+                1&-1
+            \end{pmatrix}=H_A,
+        \end{align}
+        使得 $\tr_B\left((U_A\otimes I_B)\rho_{AB}(U_A\otimes I_B)^{-1}\right)=\rho$. 因此, 存在单方的局域幺正操作 $H_A\otimes I_B=\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1&1\\
+            1&-1
+        \end{pmatrix}\times\begin{pmatrix}
+            1&0\\
+            0&1
+        \end{pmatrix}$, 可以将纯态 $\lvert\psi\rangle$ 变换成混态 $\rho$ 的纯化态.
+
+        \item[(b)] 将复合系统中的三个 qubit 依次标号为 A, B, C. 复合系统纯态对应的密度矩阵为
+        \begin{align}
+            \rho_{ABC}=\lvert\psi\rangle\langle\psi\rvert=\left[\frac{\sqrt{7}}{4}(\lvert 000\rangle+\lvert 010\rangle)+\frac{1}{4}(\lvert 101\rangle-\lvert 111\rangle)\right]\left[\frac{\sqrt{7}}{4}(\langle 000\rvert+\langle 010\rvert)+\frac{1}{4}(\langle 101\rvert-\langle 111\rvert)\right],
+        \end{align}
+        对其关于 A 求偏迹得
+        \begin{align}
+            \notag&\tr_A(\rho_{ABC})=\tr_A(\lvert\psi\rangle\langle\psi\rvert)\\
+            \notag=&\sum_{i=0}^1{}_A\langle i\rvert\left[\frac{\sqrt{7}}{4}(\lvert 000\rangle+\lvert 010\rangle)+\frac{1}{4}(\lvert 101\rangle-\lvert 111\rangle)\right]\left[\frac{\sqrt{7}}{4}(\langle 000\rvert+\langle 010\rvert)+\frac{1}{4}(\langle 101\rvert-\langle 111\rvert)\right]\lvert i\rangle_A\\
+            =&\frac{1}{16}\begin{pmatrix}
+                7&0&7&0\\
+                0&1&0&-1\\
+                7&0&7&0\\
+                0&-1&0&1
+            \end{pmatrix}.
+        \end{align}
+        关于 B 求偏迹得
+        \begin{align}
+            \notag&\tr_B(\rho_{ABC})=\tr_B(\lvert\psi\rangle\langle\psi\rvert)\\
+            \notag=&\sum_{i=0}^1{}_B\langle i\rvert\left[\frac{\sqrt{7}}{4}(\lvert 000\rangle+\lvert 010\rangle)+\frac{1}{4}(\lvert 101\rangle-\lvert 111\rangle)\right]\left[\frac{\sqrt{7}}{4}(\langle 000\rvert+\langle 010\rvert)+\frac{1}{4}(\langle 101\rvert-\langle 111\rvert)\right]\lvert i\rangle_B\\
+            =&\frac{1}{16}\begin{pmatrix}
+                14&0&0&0\\
+                0&0&0&0\\
+                0&0&0&0\\
+                0&0&0&2
+            \end{pmatrix}.
+        \end{align}
+        关于 C 求偏迹得
+        \begin{align}
+            \notag&\tr_C(\rho_{ABC})=\tr_C(\lvert\psi\rangle\langle\psi\rvert)\\
+            \notag=&\sum_{i=0}^1{}_C\langle i\rvert\left[\frac{\sqrt{7}}{4}(\lvert 000\rangle+\lvert 010\rangle)+\frac{1}{4}(\lvert 101\rangle-\lvert 111\rangle)\right]\left[\frac{\sqrt{7}}{4}(\langle 000\rvert+\langle 010\rvert)+\frac{1}{4}(\langle 101\rvert-\langle 111\rvert)\right]\lvert i\rangle_C\\
+            =&\frac{1}{16}\begin{pmatrix}
+                7&7&0&0\\
+                7&7&0&0\\
+                0&0&1&-1\\
+                0&0&-1&1
+            \end{pmatrix}.
+        \end{align}
+        而题设中给出的混合态密度矩阵为
+        \begin{align}
+            \notag\rho=&\frac{3}{4}\lvert\phi^+\rangle\langle\phi^+\rvert+\frac{1}{16}I\otimes I=\frac{3}{4}\frac{1}{\sqrt{2}}(\lvert 0\rangle\lvert 0\rangle+\lvert 1\rangle\lvert 1\rangle)\frac{1}{\sqrt{2}}(\langle 0\rvert\langle 0\rvert+\langle 1\rvert\langle 1\rvert)+\frac{1}{16}I\otimes I\\
+            =&\frac{3}{8}\begin{pmatrix}
+                1&0&0&1\\
+                0&0&0&0\\
+                0&0&0&0\\
+                1&0&0&1
+            \end{pmatrix}+\frac{1}{16}\begin{pmatrix}
+                1&0&0&0\\
+                0&1&0&0\\
+                0&0&1&0\\
+                0&0&0&1
+            \end{pmatrix}=\frac{1}{16}\begin{pmatrix}
+                7&0&0&6\\
+                0&1&0&0\\
+                0&0&1&0\\
+                6&0&0&7
+            \end{pmatrix}.
+        \end{align}
+        $\tr_A(\rho_{ABC})\neq\rho$, $\tr_B(\rho_{ABC})\neq\rho$, $\tr_C(\rho_{ABC})\neq\rho$, 故 $\lvert\psi\rangle$ \uline{不是} $\rho$ 的纯化态.
+
+        由于 $\tr_A(\rho_{ABC})$, $\tr_B(\rho_{ABC})$, $\tr_C(\rho_{ABC})$ 的本征值均为 $\frac{7}{8},\frac{1}{8},0,0$, 不同于与 $\rho$ 的本征值 $\frac{13}{16},\frac{1}{16},\frac{1}{16},\frac{1}{16}$, 故\uline{不存在}单方的局域幺正操作, 将纯态 $\lvert\psi\rangle$ 变换成到相应混合量子态 $\rho$ 的纯化态.
+    \end{itemize}
+\end{sol}
+
+\begin{probcontinued}{2 补充习}
+    现有一个主系统 A 和一个辅助系统 B 组成的联合量子比特系统 $H_A\otimes H_B$, 分别作用下面的联合幺正操作: $U_1=\lvert 0\rangle\langle 0\rvert\otimes I+\lvert 1\rangle\langle 1\rvert\otimes X$, $U_2=\frac{1}{\sqrt{2}}(X\otimes I+Y\otimes X)$, 其中 $X,Y,Z$ 分别对应三个泡利矩阵, 假定辅助系统的初始态为 $\lvert 0\rangle$,
+    \begin{itemize}
+        \item[a)] 试分别写出 $U_1$ 和 $U_2$ 在主系统中的算符和表示;
+        \item[b)] 如果考虑联合作用 $U=U_1U_2$, 取同样的辅助系统的初始态为 $\lvert 0\rangle$, 写出其算符和形式; 并验证该算符和是否对应 $U_1$ 和 $U_2$ 各自对应超算符 $\xi_1$ 和 $\xi_2$ 的联合 $\xi=\xi_1\xi_2$.
+    \end{itemize}
+\end{probcontinued}
+\begin{sol}
+    \begin{itemize}
+        \item[a)] $U_1$ 的 Kraus 算符为
+        \begin{align}
+            M_0^{(1)}=&_B\langle 0\rvert U_1\lvert 0\rangle_B=\lvert 0\rangle\langle 0\rvert,\\
+            M_1^{(1)}=&_B\langle 1\rvert U_1\lvert 0\rangle_B=\lvert 1\rangle\langle 1\rvert.
+        \end{align}
+        $U_1$ 在主系统中的算符和表示为
+        \begin{align}
+            M_0^{(1)\dagger}M_0^{(1)}+M_0^{(2)\dagger}M_0^{(2)}=(\lvert 0\rangle\langle 0\rvert)(\lvert 0\rangle\langle 0\rvert)+(\lvert 1\rangle\langle 1\rvert)(\lvert 1\rangle\langle 1\rvert)=\lvert 0\rangle\langle 0\rvert+\lvert 1\rangle\langle 1\rvert=I_A.
+        \end{align}
+        $U_2$ 的 Kraus 算符为
+        \begin{align}
+            M_0^{(2)}=&_B\langle 0\rvert U_2\lvert 0\rangle_B=\frac{1}{\sqrt{2}}X,\\
+            M_1^{(2)}=&_B\langle 1\rvert U_2\lvert 0\rangle_B=\frac{1}{\sqrt{2}}Y.
+        \end{align}
+        $U_2$ 在主系统中的算符和表示为
+        \begin{align}
+            M_0^{(2)\dagger}M_0^{(2)}+M_1^{(2)\dagger}M_1^{(2)}=\frac{1}{2}(XX+YY)=I_A.
+        \end{align}
+        \item[b)] 复合变换
+        \begin{align}
+            \notag U=&U_1U_2=(\lvert 0\rangle\langle 0\rvert\otimes I+\lvert 1\rangle\langle 1\rvert\otimes X)\frac{1}{\sqrt{2}}(X\otimes I+Y\otimes X)\\
+            =&\frac{1}{\sqrt{2}}(\lvert 0\rangle\langle 1\rvert\otimes I-i\lvert 0\rangle\langle 1\rvert\otimes X+\lvert 1\rangle\langle 0\rvert\otimes X+i\lvert 1\rangle\langle 0\rvert\otimes I)
+        \end{align}
+        的 Kraus 算符为
+        \begin{align}
+            M_0=&_B\langle 0\rvert U\lvert 0\rangle_B=\frac{1}{\sqrt{2}}(\lvert 0\rangle\langle 1\rvert+i\lvert 1\rangle\langle 0\rvert),\\
+            M_1=&_B\langle 1\rvert U\lvert 0\rangle_B=\frac{1}{\sqrt{2}}(\lvert 1\rangle\langle 0\rvert-i\lvert 0\rangle\langle 1\rvert).
+        \end{align}
+        $U$ 的算符和表示为
+        \begin{align}
+            \notag M_0^{\dagger}M_0+M_1^{\dagger}M_1=&\frac{1}{2}(\lvert 1\rangle\langle 0\rvert-i\lvert 0\rangle\langle 1\rvert)(\lvert 0\rangle\langle 1\rvert+i\lvert 1\rangle\langle 0\rvert)+\frac{1}{2}(\lvert 0\rangle\langle 1\rvert+i\lvert 1\rangle\langle 0\rvert)(\lvert 1\rangle\langle 0\rvert-i\lvert 0\rangle\langle 1\rvert)\\
+            =&\lvert 0\rangle\langle 0\rvert+\lvert 1\rangle\langle 1\rvert=I_A.
+        \end{align}
+
+        联合超算符 $\xi=\xi_1\xi_2$ 作用在主系统的密度矩阵上:
+        \begin{align}
+            \notag\$(\rho_A)=&\$_1(\$_2(\rho_A))=\sum_{i=0}^1M_i^{(1)}\left(\sum_{j=0}^1M_j^{(2)}\rho_AM_j^{(2)\dagger}\right)M_i^{(1)\dagger}\\
+            \notag=&\frac{1}{2}(\lvert 0\rangle\langle 0\rvert)(X\rho_AX+Y\rho_AY)(\lvert 0\rangle\langle 0\rvert)+\frac{1}{2}(\lvert 1\rangle\langle 1\rvert)(X\rho_AX+Y\rho_AY)(\lvert 1\rangle\langle 1\rvert)\\
+            =&\lvert 1\rangle\langle 0\rvert\rho_A\lvert 0\rangle\langle 1\rvert+\lvert 0\rangle\langle 1\rvert\rho_A\lvert 1\rangle\langle 0\rvert,
+        \end{align}
+        其算符和表示为
+        \begin{align}
+            (\lvert 1\rangle\langle 0\rvert)(\lvert 0\rangle\langle 1\rvert)+(\lvert 0\rangle\langle 1\rvert)(\lvert 1\rangle\langle 0\rvert)=\lvert 1\rangle\langle 1\rvert+\lvert 0\rangle\langle 0\rvert=I_A.
+        \end{align}
+        $U=U_1U_2$ 对主系统密度矩阵的作用不同于联合超算符 $\$=\$_1\$_2$ 对主系统的作用, 故算符 $U=U_1U_2$ 并不对应联合超算符 $\$=\$_1\$_2$.
+    \end{itemize}
+\end{sol}
+
+\begin{probcontinued}{3 补充习}
+    假定有一个超算符演化满足 $\xi(\rho)=\frac{p}{d}I+(1-p)\rho$, 其中 $p$ 为小于等于 $1$ 的实数, $d$ 表示系统的维数, 试在 $d=2$ 时, 构造出该演化的算符和形式. 如果 $d=3$, 该如何构造?
+\end{probcontinued}
+\begin{sol}
+    当 $d=2$ 时, 该超算符演化可表为
+    \begin{align}
+        \notag\$(\rho)=&\frac{p}{d}I+(1-p)\rho\\
+        \notag=&\frac{p}{2}[\lvert 0\rangle\langle 0\rvert+\lvert 1\rangle\langle 1\rvert]+(\sqrt{1-p}I)\rho(\sqrt{1-p}I)\\
+        \notag=&\frac{p}{2}[\lvert 0\rangle 1\langle 0\rvert+\lvert 1\rangle 1\langle 1\rvert]+(\sqrt{1-p}I)\rho(\sqrt{1-p}I)\\
+        \notag=&\frac{p}{2}[\lvert 0\rangle(\langle 0\rvert\rho\lvert 0\rangle+\langle 1\rvert\rho\lvert 1\rangle)\langle 0\rvert+\lvert 1\rangle(\langle 0\rvert\rho\lvert 0\rangle+\langle 1\rvert\rho\lvert 1\rangle)\langle 1\rvert]+(\sqrt{1-p}I)\rho(\sqrt{1-p}I)\\
+        \notag=&\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 0\rvert\right)\rho\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 1\rvert\right)\rho\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 0\rvert\right)\rho\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 1\rvert\right)\\
+        &+\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 1\rvert\right)\rho\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 1\rvert\right)+(\sqrt{1-p}I)\rho(\sqrt{1-p}I).
+    \end{align}
+    该演化的算符和形式为
+    \begin{align}
+        \notag&\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 0\rvert\right)\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 0\rvert\right)\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 1\rvert\right)+\left(\sqrt{\frac{p}{2}}\lvert 0\rangle\langle 1\rvert\right)\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 0\rvert\right)&\\
+        \notag+&\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 1\rvert\right)\left(\sqrt{\frac{p}{2}}\lvert 1\rangle\langle 1\rvert\right)+(\sqrt{1-p}I)(\sqrt{1-p}I)\\
+        =&p\lvert 0\rangle\langle 0\rvert+p\lvert 1\rangle\langle 1\rvert+(1-p)I=I.
+    \end{align}
+
+    当 $d=3$ 时, 该超算符演化可表为
+    \begin{align}
+        \notag\$(\rho)=&\frac{p}{d}I+(1-p)\rho\\
+        \notag=&\frac{p}{3}[\lvert 0\rangle\langle 0\rvert+\lvert 1\rangle\langle 1\rvert+\lvert 2\rangle\langle 2\rvert]+(\sqrt{1-p}I)\rho(\sqrt{1-p}I)\\
+        \notag=&\frac{p}{3}[\lvert 0\rangle 1\langle 0\rvert+\lvert 1\rangle 1\langle 1\rvert+\lvert 2\rangle 1\langle 2\rvert]+(\sqrt{1-p}I)\rho(\sqrt{1-p}I)\\
+        \notag=&\frac{p}{3}[\lvert 0\rangle(\langle 0\rvert\rho\lvert 0\rangle+\langle 1\rvert\rho\lvert 1\rangle+\langle 2\rvert\rho\lvert 2\rangle)\langle 0\rvert+\lvert 1\rangle(\langle 0\rvert\rho\lvert 0\rangle+\langle 1\rvert\rho\lvert 1\rangle+\langle 2\rvert\rho\lvert 2\rangle)\langle 1\rvert+\lvert 2\rangle(\langle 0\rvert\rho\lvert 0\rangle+\langle 1\rvert\rho\lvert 1\rangle+\langle 2\rvert\rho\lvert 2\rangle)\langle 2\rvert]\\
+        \notag&+(\sqrt{1-p}I)\rho(\sqrt{1-p}I)\\
+        \notag=&\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 0\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 1\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 2\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 0\rvert\right)\\
+        \notag&+\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 0\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 1\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 1\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 1\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 2\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 1\rvert\right)\\
+        \notag&+\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 0\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 2\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 1\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 2\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 2\rvert\right)\rho\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 2\rvert\right)\\
+        \notag&+(\sqrt{1-p}I)\rho(\sqrt{1-p}I).
+    \end{align}
+    该演化的算符和形式为
+    \begin{align}
+        \notag&\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 0\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 0\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 1\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 0\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 2\rvert\right)\\
+        \notag+&\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 1\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 1\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 1\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 1\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 2\rvert\right)\\
+        \notag+&\left(\sqrt{\frac{p}{3}}\lvert 0\rangle\langle 2\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 0\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 1\rangle\langle 2\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 1\rvert\right)+\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 2\rvert\right)\left(\sqrt{\frac{p}{3}}\lvert 2\rangle\langle 2\rvert\right)+(\sqrt{1-p}I)(\sqrt{1-p}I)\\
+        =&p\lvert 0\rangle\langle 0\rvert+p\lvert 1\rangle\langle 1\rvert+p\lvert 2\rangle\langle 2\rvert+(1-p)I=I.
+    \end{align}
 \end{sol}
 
 \begin{probcontinued}{8}
     证明超算符仅在幺正条件下才是可逆的.
 \end{probcontinued}
 \begin{pf}
-    
+    \textbf{充分性}: 给定超算符 $\$(\rho)=\sum_{i=1}^mM_i\rho M_i^{\dagger}$, 其中 Kraus 算符均为幺正的, 即 $M_i^{\dagger}M_i=I$. 超算符满足
+    \begin{gather}
+        \sum_{i=1}^mM_i^{\dagger}M_i=I,\\
+        \Longrightarrow\sum_{i=1}^mI=mI=I,\\
+        \Longrightarrow m=1.
+    \end{gather}
+    从而 $\$(\rho)=M\rho M^{\dagger}$, 其中 $M^{\dagger}M=I$. 我们可以构造这一超算符的逆:
+    \begin{align}
+        \$(\rho)=M^{\dagger}\rho M,
+    \end{align}
+    其满足
+    \begin{align}
+        \$^{-1}(\$(\rho))=M^{\dagger}M\rho M^{\dagger}M=\rho.
+    \end{align}
+
+    \textbf{必要性}: 当存在超算符
+    \begin{align}
+        \$(\rho)=\sum_{i=1}^mM_i\rho M_i^{\dagger}
+    \end{align}
+    的逆
+    \begin{align}
+        \$_1(\rho)=\sum_{i=1}^nN_i\rho N_i^{\dagger}.
+    \end{align}
+    超算符及其逆依次作用于密度矩阵
+    \begin{align}
+        \$_2(\rho)=\$_1(\$(\rho))=\sum_{j=1}^n\sum_{i=1}^mN_jM_i\rho M_i^{\dagger}N_j^{\dagger}=\rho=I\rho I.
+    \end{align}
+    这里 $\$_2$ 可视为另一作用在密度矩阵上的超算符, 对应的 Kraus 算符为 $N_jM_i$, 满足
+    \begin{gather}
+        \sum_{j=1}^n\sum_{i=1}^mM_i^{\dagger}N_j^{\dagger}N_jM_i=I=\sum_{i=1}^mM_i^{\dagger}M_i,\\
+        \Longrightarrow\sum_{j=1}^nN_j^{\dagger}N_j=I.
+    \end{gather}
+    这意味着 Kraus 算符与单位算符 $I$ 仅差一系数,
+    \begin{align}
+        N_jM_i=\lambda_{ji}I,
+    \end{align}
+    且
+    \begin{align}
+        \sum_{ij}\abs{\lambda_{ji}}^2=1.
+    \end{align}
+    利用上面得到的 $\sum_{j=1}^nN_j^{\dagger}N_j=I$, 有
+    \begin{gather}
+        M_a^{\dagger}M_b=\sum_jM_a^{\dagger}N_j^{\dagger}N_jM_b=\sum_j\lambda_{ja}^*\lambda_{jb}I=\gamma_{ab}I,\\
+        \Longrightarrow M_i^{\dagger}=\gamma_{ii}M_i^{-1}.
+    \end{gather}
+    又有
+    \begin{align}
+        M_iM_i^{\dagger}M_j=\gamma_{ii}M_j=\gamma_{ij}M_i.
+    \end{align}
+    得证??
 \end{pf}
 
 \begin{probcontinued}{9}
     证明 $\lvert\psi^-\rangle=\frac{1}{\sqrt{2}}(\lvert 0\rangle\lvert 1\rangle-\lvert 1\rangle\lvert 0\rangle)$ 在 $U(\theta,\vec{n})\otimes U(\theta,\vec{n})$ 下是不变的.
 \end{probcontinued}
 \begin{pf}
-    
+    已知
+    \begin{align}
+        U(\theta,\vec{n})=&\exp(-i\theta\vec{n}\cdot\vec{\sigma}/2)=\cos\left(\frac{\theta}{2}\right)-i\sin\left(\frac{\theta}{2}\right)\vec{n}\cdot\vec{\sigma}=\cos\left(\frac{\theta}{2}\right)I-i\sin\left(\frac{\theta}{2}\right)(n_xX+n_yY+n_zZ),\\
+        \Longrightarrow U(\theta,\vec{n})\lvert 0\rangle=&\left(\cos\frac{\theta}{2}-in_z\sin\frac{\theta}{2}\right)\lvert 0\rangle-i\sin\frac{\theta}{2}\left(n_x-in_y\right)\lvert 1\rangle,\\
+        U(\theta,\vec{n})\lvert 1\rangle=&-i\sin\frac{\theta}{2}(n_x+in_y)\lvert 0\rangle+\left(\cos\frac{\theta}{2}+in_z\sin\frac{\theta}{2}\right)\lvert 1\rangle.
+    \end{align}
+    将 $U(\theta,\vec{n})\otimes U(\theta,\vec{n})$ 作用在 $\lvert\psi^-\rangle$ 上, 可得
+    \begin{align}
+        \notag&U(\theta,\vec{n})\otimes U(\theta,\vec{n})\lvert\psi^-\rangle=U(\theta,\vec{n})\otimes U(\theta,\vec{n})\frac{1}{\sqrt{2}}(\lvert 0\rangle\lvert 1\rangle-\lvert 1\rangle\lvert 0\rangle)\\
+        \notag=&\frac{1}{\sqrt{2}}\left\{\left[\left(\cos\frac{\theta}{2}-in_z\sin\frac{\theta}{2}\right)\lvert 0\rangle-i\sin\frac{\theta}{2}(n_x-in_y)\lvert 1\rangle\right]\left[-i\sin\frac{\theta}{2}(n_x+in_y)\lvert 0\rangle+\left(\cos\frac{\theta}{2}+in_z\sin\frac{\theta}{2}\right)\lvert 1\rangle\right]\right.\\
+        \notag&\left.-\left[-i\sin\frac{\theta}{2}(n_x+in_y)\lvert 0\rangle+\left(\cos\frac{\theta}{2}+in_z\sin\frac{\theta}{2}\right)\lvert 1\rangle\right]\left[\left(\cos\frac{\theta}{2}-in_z\sin\frac{\theta}{2}\right)\lvert 0\rangle-i\sin\frac{\theta}{2}(n_x-in_y)\lvert 1\rangle\right]\right\}\\
+        \notag=&\frac{1}{\sqrt{2}}\left\{\left[\left(\cos\frac{\theta}{2}-in_z\sin\frac{\theta}{2}\right)\left(\cos\frac{\theta}{2}+in_z\sin\frac{\theta}{2}\right)+\sin^2\frac{\theta}{2}(n_x+in_y)(n_x-in_y)\right]\lvert 0\rangle\lvert 1\rangle\right.\\
+        \notag&\left.+\left[-\sin^2\frac{\theta}{2}(n_x-in_y)(n_x+in_y)-\left(\cos\frac{\theta}{2}+in_z\sin\frac{\theta}{2}\right)\left(\cos\frac{\theta}{2}-in_z\sin\frac{\theta}{2}\right)\right]\lvert 1\rangle\lvert 0\rangle\right\}\\
+        \notag=&\frac{1}{\sqrt{2}}\left\{\left[\cos^2\frac{\theta}{2}+\sin^2\frac{\theta}{2}(n_x^2+n_y^2+n_z^2)\right]\lvert 0\rangle\lvert 1\rangle-\left[\cos^2\frac{\theta}{2}+\sin^2\frac{\theta}{2}(n_x^2+n_y^2+n_z^2)\right]\lvert 1\rangle\lvert 0\rangle\right\}\\
+        =&\frac{1}{\sqrt{2}}(\lvert 0\rangle\lvert 1\rangle-\lvert 1\rangle\lvert 0\rangle),
+    \end{align}
+    故 $\lvert\psi^-\rangle$ 在 $U(\theta,\vec{n})\otimes U(\theta,\vec{n})$ 下是不变的.
 \end{pf}
-
-\begin{probcontinued}{10}
-    证明 $S(\rho_A)+S(\rho_B)\leq S(\rho_{AC})+S(\rho_{BC})$.
-\end{probcontinued}
-\begin{pf}
-    
-\end{pf}
-
-\begin{probcontinued}{11}
-    考虑 $2$-qubit 系统 $\rho_{AB}=\frac{1}{8}I\otimes I+\frac{1}{2}\lvert\psi^-\rangle\langle\psi^-\rvert$, 分别沿 $\vec{n}$, $\vec{m}$ 方向测 A, B 粒子的自旋. 其中 $\vec{m}\cdot\vec{n}=\cos\theta$, 则测量结果均为向上的联合概率是多少? 由 Peres-Horodeski 判据, 确定 $\rho_{AB}$ 是否为可分量子态.
-\end{probcontinued}
-\begin{sol}
-    
-\end{sol}
 \end{document}
