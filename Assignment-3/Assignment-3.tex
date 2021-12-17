@@ -1,0 +1,350 @@
+\documentclass{assignment}
+\ProjectInfos{量子信息导论}{PHYS5251P}{2021-2022 学年第一学期}{第三次作业}{截止日期：2021. 11. 19（周五）}{陈稼霖}[https://github.com/Chen-Jialin]{SA21038052}
+
+\begin{document}
+\begin{prob}
+    试证明相对熵纠缠度量在纯态情况下和 Von Neumann 熵是等价的. (求任意给定纯态 $\lvert\psi_{AB}\rangle$ 和任意混合态 $\sum_ip_i\rho_i\otimes\sigma_i$ 中的最小相对熵 $S\left(\lvert\psi_{AB}\rangle\langle\psi_{AB}\rvert\Vert\sum_ip_i\rho_i\otimes\sigma_i\right)$).
+\end{prob}
+\begin{pf}
+    记
+    \begin{align}
+        \rho_{AB}=\lvert\psi_{AB}\rangle\langle\psi_{AB}\rvert.
+    \end{align}
+    纯态 $\lvert\psi_{AB}\rangle$ 和混合态 $\sum_ip_i\rho_i\otimes\sigma_i$ 的相对熵为
+    \begin{align}
+        \notag S\left(\rho_{AB}\Vert\sum_ip_i\rho_i\otimes\sigma_i\right)=&\tr\left(\rho_{AB}\left(\log_2\rho_{AB}-\log_2\sum_ip_i\rho_i\otimes\sigma_i\right)\right)\\
+        \notag=&\tr(\rho_{AB}\log_2\rho_{AB})-\tr\left(\rho_{AB}\log_2\sum_ip_i\rho_i\otimes\sigma_i\right)\\
+        =&-S(\rho_{AB})-\tr\left(\rho_{AB}\log_2\sum_ip_i\rho_i\otimes\sigma_i\right).
+    \end{align}
+    而 $\lvert\psi_{AB}\rangle$ 的 Von Neumann 熵为
+    \begin{align}
+        S(\rho_{AB}\Vert\rho_A\otimes\rho_B)=S(\rho_A)+S(\rho_B)-S(\rho_{AB}).
+    \end{align}
+    要证 $\min_{\sum_ip_i\rho_i\otimes\sigma_i}S\left(\lvert\psi_{AB}\rangle\langle\psi_{AB}\rvert\Vert\sum_ip_i\rho_i\otimes\sigma_i\right)=S(\lvert\psi_{AB}\rangle\langle\psi_{AB}\rvert)$, 即证 $\min\tr\left(\rho_{AB}\log_2p_i\rho_i\otimes\sigma_i\right)=S(\rho_A)+S(\rho_B)$.\\
+    对 $\lvert\psi_{AB}\rangle$ 进行 Schmidt 分解得
+    \begin{align}
+        \lvert\psi_{AB}\rangle=\sum_ia_i\lvert\psi_i\rangle_A\lvert\psi_i\rangle_B,
+    \end{align}
+    其中 $\sum_i\abs{a_i}^2=1$, $\{\lvert\psi_i\rangle_A\}$ 和 $\{\lvert\phi_i\rangle_B\}$ 分别是子系统 A 和 B 的正交归一基.
+\end{pf}
+
+\begin{prob}
+    计算混合量子态 $\rho=p\lvert\phi^+\rangle\langle\phi^+\rvert+\frac{1-p}{4}I_{4\times 4}$ 的纠缠 concurrence, 其中 $0\leq p\leq 1$, $\lvert\phi^+\rangle$ 是 Bell 态.
+\end{prob}
+\begin{sol}
+    混合量子态为
+    \begin{align}
+        \notag\rho=&p\lvert\phi^+\rangle\langle\phi^+\rvert+\frac{1-p}{4}I_{4\times 4}\\
+        \notag=&p\frac{1}{\sqrt{2}}(\lvert 00\rangle+\lvert 11\rangle)\frac{1}{\sqrt{2}}(\langle 00\rvert+\langle 11\rvert)+\frac{1-p}{4}I_{4\times 4}\\
+        \notag=&\frac{p}{2}(\lvert 00\rangle\langle 00\rvert+\lvert 00\rangle\langle 11\rvert+\lvert 11\rangle\langle 00\rvert+\lvert 11\rangle\langle 11\rvert)+\frac{1-p}{4}I_{4\times 4}\\
+        =&\frac{p}{2}\begin{pmatrix}
+            1&0&0&1\\
+            0&0&0&0\\
+            0&0&0&0\\
+            1&0&0&1
+        \end{pmatrix}+\frac{1-p}{4}\begin{pmatrix}
+            1&0&0&0\\
+            0&1&0&0\\
+            0&0&1&0\\
+            0&0&0&1
+        \end{pmatrix}=\begin{pmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{pmatrix}.
+    \end{align}
+    取该密度矩阵的复共轭, 并用泡利算符 $\sigma_y$ 分别作用两个 qubit, 得
+    \begin{align}
+        \notag\tilde{\rho}=&(\sigma_y\otimes\sigma_y)\rho^*(\sigma_y\otimes\sigma_y)\\
+        \notag=&\left(\begin{pmatrix}
+            0&-i\\
+            i&0
+        \end{pmatrix}\otimes\begin{pmatrix}
+            0&-i\\
+            i&0
+        \end{pmatrix}\right)\begin{pmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{pmatrix}\left(\begin{pmatrix}
+            0&-i\\
+            i&0
+        \end{pmatrix}\otimes\begin{pmatrix}
+            0&-i\\
+            i&0
+        \end{pmatrix}\right)\\
+        \notag=&\begin{pmatrix}
+            0&0&0&-1\\
+            0&0&1&0\\
+            0&1&0&0\\
+            -1&0&0&0
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{pmatrix}\begin{pmatrix}
+            0&0&0&-1\\
+            0&0&1&0\\
+            0&1&0&0\\
+            -1&0&0&0
+        \end{pmatrix}\\
+        =&\begin{pmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{pmatrix}.
+    \end{align}
+    对原混合量子态的密度矩阵进行奇异值分解得
+    \begin{align}
+        \rho=\begin{pmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{pmatrix}=\begin{pmatrix}
+            \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}&0&0\\
+            0&0&1&0\\
+            0&0&0&1\\
+            \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0&0
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1+3p}{4}&0&0&0\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            0&0&0&\frac{1-p}{4}
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1}{\sqrt{2}}&0&0&\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}}&0&0&-\frac{1}{\sqrt{2}}\\
+            0&1&0&0\\
+            0&0&1&0
+        \end{pmatrix}
+    \end{align}
+    故对其开方得
+    \begin{align}
+        \sqrt{\rho}=\begin{pmatrix}
+            \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}&0&0\\
+            0&0&1&0\\
+            0&0&0&1\\
+            \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0&0
+        \end{pmatrix}\begin{pmatrix}
+            \frac{\sqrt{1+3p}}{2}&0&0&0\\
+            0&\frac{\sqrt{1-p}}{2}&0&0\\
+            0&0&\frac{\sqrt{1-p}}{2}&0\\
+            0&0&0&\frac{\sqrt{1-p}}{2}
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1}{\sqrt{2}}&0&0&\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}}&0&0&-\frac{1}{\sqrt{2}}\\
+            0&1&0&0\\
+            0&0&1&0
+        \end{pmatrix}
+    \end{align}
+    $R$ 矩阵为
+    {\tiny
+    \begin{align}
+        \notag R=&\sqrt{\sqrt{\rho}\tilde{\rho}\sqrt{\rho}}\\
+        \notag=&\sqrt{\left(\begin{smallmatrix}
+            \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}&0&0\\
+            0&0&1&0\\
+            0&0&0&1\\
+            \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0&0
+        \end{smallmatrix}\right)\left(\begin{smallmatrix}
+            \frac{\sqrt{1+3p}}{2}&0&0&0\\
+            0&\frac{\sqrt{1-p}}{2}&0&0\\
+            0&0&\frac{\sqrt{1-p}}{2}&0\\
+            0&0&0&\frac{\sqrt{1-p}}{2}
+        \end{smallmatrix}\right)\left(\begin{smallmatrix}
+            \frac{1}{\sqrt{2}}&0&0&\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}}&0&0&-\frac{1}{\sqrt{2}}\\
+            0&1&0&0\\
+            0&0&1&0
+        \end{smallmatrix}\right)\left(\begin{smallmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{smallmatrix}\right)\left(\begin{smallmatrix}
+            \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}&0&0\\
+            0&0&1&0\\
+            0&0&0&1\\
+            \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0&0
+        \end{smallmatrix}\right)\left(\begin{smallmatrix}
+            \frac{\sqrt{1+3p}}{2}&0&0&0\\
+            0&\frac{\sqrt{1-p}}{2}&0&0\\
+            0&0&\frac{\sqrt{1-p}}{2}&0\\
+            0&0&0&\frac{\sqrt{1-p}}{2}
+        \end{smallmatrix}\right)\left(\begin{smallmatrix}
+            \frac{1}{\sqrt{2}}&0&0&\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}}&0&0&-\frac{1}{\sqrt{2}}\\
+            0&1&0&0\\
+            0&0&1&0
+        \end{smallmatrix}\right)}\\
+        \notag=&\sqrt{\begin{pmatrix}
+            0&0&1&0\\
+            0&0&0&1\\
+            \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0&0
+        \end{pmatrix}\begin{pmatrix}
+            \left(\frac{1+3p}{4}\right)^2&0&0&0\\
+            0&\left(\frac{1-p}{4}\right)^2&0&0\\
+            0&0&\left(\frac{1-p}{4}\right)^2&0\\
+            0&0&0&\left(\frac{1-p}{4}\right)^2
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1}{\sqrt{2}}&0&0&\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}}&0&0&-\frac{1}{\sqrt{2}}\\
+            0&1&0&0\\
+            0&0&1&0
+        \end{pmatrix}}\\
+        \notag=&\begin{pmatrix}
+            0&0&1&0\\
+            0&0&0&1\\
+            \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}&0&0
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1+3p}{4}&0&0&0\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            0&0&0&\frac{1-p}{4}
+        \end{pmatrix}\begin{pmatrix}
+            \frac{1}{\sqrt{2}}&0&0&\frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}}&0&0&-\frac{1}{\sqrt{2}}\\
+            0&1&0&0\\
+            0&0&1&0
+        \end{pmatrix}\\
+        =&\begin{pmatrix}
+            \frac{1+p}{4}&0&0&\frac{p}{2}\\
+            0&\frac{1-p}{4}&0&0\\
+            0&0&\frac{1-p}{4}&0\\
+            \frac{p}{2}&0&0&\frac{1+p}{4}
+        \end{pmatrix}.
+    \end{align}
+    }
+    $R$ 的本征值从大到小依次为 $\lambda_1=\frac{1+3p}{4}$, $\lambda_2=\frac{1-p}{4}$, $\lambda_3=\frac{1-p}{4}$, $\lambda_4=\frac{1-p}{4}$, 故 concurrence 为
+    \begin{align}
+        C(\rho)=\max\{0,\lambda_1-\lambda_2-\lambda_3-\lambda_4\}=\max\{0,\frac{3p-1}{2}\}=\left\{\begin{array}{ll}
+            0,&0\leq p\leq\frac{1}{3},\\
+            \frac{3p-1}{2},&\frac{1}{3}<p\leq 1.
+        \end{array}\right.
+    \end{align}
+\end{sol}
+
+\begin{probcontinued}{10}
+    证明 $S(\rho_A)+S(\rho_B)\leq S(\rho_{AC})+S(\rho_{BC})$.
+\end{probcontinued}
+\begin{pf}
+    \footnote{参考文献: Lieb, Elliott H., and Mary Beth Ruskai. ``Proof of the strong subadditivity of quantum-mechanical entropy.'' \textit{J. Math. Phys.} 19 (1973): 36-55.}首先来证明一个引理:
+    \begin{framed}
+        映射 $f(\rho_{AC})=S(\tr_C(\rho_{AC}))-S(\rho_{AC})$ 在 A 与 C 的复合 Hilbert 空间 $H_A\otimes H_C$ 上是凸的, 即
+        \begin{align}
+            \notag f(\rho_{AC})=S(\tr_C(\rho_{AC}))-S(\rho_{AC})\\
+            \leq&\alpha f(\rho_{A'C})+(1-\alpha)f(\rho_{A''C})=\alpha[S(\rho_{A'})-S(\rho_{A'C})]+(1-\alpha)[S(\rho_{A''})-S(\rho_{A''C})],
+        \end{align}
+        其中 $\rho_{AC}=\alpha\rho_{A'C}+(1-\alpha)\rho_{A''C}$.
+    \end{framed}
+    这里我们定义
+    \begin{align}
+        \Delta=&\alpha\tr[\rho_{A'C}(-\log_2\rho_{A'C}+\log_2\rho_{A'}+\log_2\rho_{AC}-\log_2\rho_A)],\\
+        \Gamma=&(1-\alpha)\tr[\rho_{A''C}(-\log_2\rho_{A''C}+\log_2\rho_{A''}+\log_2\rho_{AC}-\log_2\rho_A)].
+    \end{align}
+    要证上述引理, 即转化为证
+    \begin{align}
+        \Delta+\Gamma\leq 0.
+    \end{align}
+    利用 Klein 定理,
+    % \begin{align}
+    %     \tr(-A\log_2A+A\log_2B)\leq\tr(B-A),
+    % \end{align}
+    % 取 $A=\rho_{A'C}$ 和 $B=\exp(\ln\rho_{A'}+\ln\rho_{AC}-\ln\rho_A)$ 
+    得
+    \begin{align}
+        \Delta+\Gamma\leq\alpha\tr[\exp(\log_2\rho_{A'}+\log_2\rho_{AC}-\log_2\rho_A)-\rho_{A'C}]+(1-\alpha)\tr[\exp(\log_2\rho_{A''}+\log_2\rho_{AC}-\log_2\rho_A)-\rho_{A''C}],
+    \end{align}
+    再利用映射 $g(C)=\exp(K+\ln C)$ (其中 $K=\log_2\rho_{AC}-\log_2\rho_A$) 的上凸性 (即 $\alpha\tr_{AC}[\exp(\ln\rho_{A'}+\ln\rho_{AC}-\log_2\rho_A)]+(1-\alpha)\tr_{AC}[\exp(\log_2\rho_{A''}+\log_2\rho_{AC}-\log_2\rho_A)]\leq\tr(\exp(\log_2\rho_A+\log_2))$), 得
+    \begin{align}
+        \Delta+\Gamma=\tr[\exp(\log_2\rho_A+\log_2\rho_{AB}-\log_2\rho_A)-\rho_{AC}]=0.
+    \end{align}
+    引理证毕.
+
+    我们定义
+    \begin{align}
+        G(\rho_{ABC})=S(\tr_{BC}(\rho_{ABC}))+S(\tr_{AC}(\rho_{ABC}))-S(\tr_B(\rho_{ABC}))-S(\tr_A(\rho_{ABC})),
+    \end{align}
+    利用上证得的引理, 这里 $S(\tr_{BC}(\rho_{ABC}))-S(\tr_B(\rho_{ABC}))$ 和 $S(\tr_{AC}(\rho_{ABC}))-S(\tr_A(\rho_{ABC}))$ 在 $H_A\otimes H_B\otimes H_C$ 上也是凸的, 故 $G(\rho_{ABC})$ 在 $H_A\otimes H_B\otimes H_C$ 上是凸的.
+    利用 Araki, Huzihiro, and Elliott H. Lieb. "Entropy inequalities." \textit{Inequalities}. Springer, Berlin, Heidelberg, 2002. 47-57. 中的引理 3 得
+    \begin{align}
+        G(\rho_{ABC})\leq 0,
+    \end{align}
+    故 $S(\rho_A)+S(\rho_B)\leq S(\rho_{AC})+S(\rho_{BC})$.
+\end{pf}
+
+\begin{probcontinued}{11}
+    考虑 $2$-qubit 系统 $\rho_{AB}=\frac{1}{8}I\otimes I+\frac{1}{2}\lvert\psi^-\rangle\langle\psi^-\rvert$, 分别沿 $\vec{n}$, $\vec{m}$ 方向测 A, B 粒子的自旋. 其中 $\vec{m}\cdot\vec{n}=\cos\theta$, 则测量结果均为向上的联合概率是多少? 由 Peres-Horodeski 判据, 确定 $\rho_{AB}$ 是否为可分量子态.
+\end{probcontinued}
+\begin{sol}
+    $2$-qubit 系统的密度矩阵为
+    \begin{align}
+        \notag\rho_{AB}=&\frac{1}{8}I\otimes I+\frac{1}{2}\lvert\psi^-\rangle\langle\psi^-\rvert\\
+        \notag=&\frac{1}{8}I\otimes I+\frac{1}{2}\frac{1}{\sqrt{2}}(\lvert 01\rangle-\lvert 10\rangle)\frac{1}{\sqrt{2}}(\langle 01\rvert-\langle 10\rvert)\\
+        \notag=&\frac{1}{8}I\times I+\frac{1}{4}(\lvert 01\rangle\langle 01\rvert-\lvert 01\rangle\langle 10\rvert-\lvert 10\rangle\langle 01\rvert+\lvert 10\rangle\langle 10\rvert)\\
+        \notag=&\frac{1}{8}\begin{pmatrix}
+            1&0&0&0\\
+            0&1&0&0\\
+            0&0&1&0\\
+            0&0&0&1
+        \end{pmatrix}+\frac{1}{4}\begin{pmatrix}
+            0&0&0&0\\
+            0&1&-1&0\\
+            0&-1&1&0\\
+            0&0&0&0
+        \end{pmatrix}\\
+        =&\frac{1}{8}\begin{pmatrix}
+            1&0&0&0\\
+            0&3&-2&0\\
+            0&-2&3&0\\
+            0&0&0&1
+        \end{pmatrix}.
+    \end{align}
+    利用第 9 题的结论, $\lvert\psi^-\rangle$ 在 $U(\theta,\vec{n})\otimes U(\theta,\vec{n})$ 旋转变换下不变, 而 $\because(U(\theta,\vec{n})\otimes U(\theta,\vec{n}))I\times I(U(\theta,\vec{n})\otimes U(\theta,\vec{n}))^{\dagger}=(U(\theta,\vec{n})\otimes U(\theta,\vec{n}))I\times I(U(\theta,\vec{n})\otimes U(\theta,\vec{n}))^{-1}=I\otimes I$, $\therefore I\times I$ 也在 $U(\theta,\vec{n})\otimes U(\theta,\vec{n})$ 旋转变换下不变, 故我们不妨设 $\vec{n}$ 沿 $\lvert 0\rangle$ 方向, $\vec{m}$ 沿 $\cos\theta\lvert 0\rangle+e^{i\phi}\sin\theta\lvert 1\rangle$. 分别沿 $\vec{n}$ 和 $\vec{m}$ 测量 A, B 粒子的自旋, 测量结果均向上对应的投影矩阵为
+    \begin{align}
+        \notag P_{\uparrow\uparrow}=&\lvert 0\rangle\langle 0\rvert\otimes\left(\cos\frac{\theta}{2}\lvert 0\rangle+e^{i\phi}\sin\frac{\theta}{2}\lvert 1\rangle\right)\left(\cos\frac{\theta}{2}\langle 0\rvert+e^{-i\phi}\sin\frac{\theta}{2}\langle 1\rvert\right)\\
+        \notag=&\cos^2\frac{\theta}{2}\lvert 00\rangle\langle 00\rvert+e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\lvert 00\rangle\langle 01\rvert+e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\lvert 01\rangle\langle 00\rvert+\sin^2\frac{\theta}{2}\lvert 01\rangle\langle 01\rvert\\
+        =&\begin{pmatrix}
+            \cos^2\frac{\theta}{2}&e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&0&0\\
+            e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&\sin^2\frac{\theta}{2}&0&0\\
+            0&0&0&0\\
+            0&0&0&0
+        \end{pmatrix}
+    \end{align}
+    测量结果均为向上的联合概率为
+    \begin{align}
+        \notag p_{\uparrow\uparrow}=&\tr(P_{\uparrow\uparrow}\rho_{AB})=\tr\left(\begin{pmatrix}
+            \cos^2\frac{\theta}{2}&e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&0&0\\
+            e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&\sin^2\frac{\theta}{2}&0&0\\
+            0&0&0&0\\
+            0&0&0&0
+        \end{pmatrix}\frac{1}{8}\begin{pmatrix}
+            1&0&0&0\\
+            0&3&-2&0\\
+            0&-2&3&0\\
+            0&0&0&1
+        \end{pmatrix}\right)\\
+        =&\frac{1}{8}\tr\begin{pmatrix}
+            \cos^2\frac{\theta}{2}&3e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&-2e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&0\\
+            e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&3\sin^2\frac{\theta}{2}&-2\sin^2\frac{\theta}{2}&0\\
+            0&0&0&0\\
+            0&0&0&0
+        \end{pmatrix}=\frac{1}{8}\left(\cos^2\frac{\theta}{2}+3\sin^2\frac{\theta}{2}\right)=\frac{1}{8}+\frac{1}{4}\sin^2\frac{\theta}{2}.
+    \end{align}
+
+    $\rho_{AB}$ 的部分转置矩阵为
+    \begin{align}
+        \sigma_{AB}=\rho_{AB}^{T_B}=\frac{1}{8}\begin{pmatrix}
+            1&0&0&-2\\
+            0&3&0&0\\
+            0&0&3&0\\
+            -2&0&0&1
+        \end{pmatrix},
+    \end{align}
+    其特征值为 $\frac{3}{8},\frac{3}{8},\frac{3}{8},-\frac{1}{8}$, 其中有负特征值, 故 $\sigma_{AB}$ 非半正定, 根据 Peres-Horodeski 判据, $\rho_{AB}$ 不是可分量子态.
+\end{sol}
+\end{document}
