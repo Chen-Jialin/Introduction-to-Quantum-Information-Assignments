@@ -1,0 +1,178 @@
+\documentclass{assignment}
+\ProjectInfos{量子信息导论}{PHYS5251P}{2021-2022 学年第一学期}{第五次作业（量子计算第一章）}{截止日期：2021. 12. 22（周三）}{陈稼霖}[https://github.com/Chen-Jialin]{SA21038052}
+
+\begin{document}
+\begin{prob}
+    按图灵机中两态转移矩阵的定义 (PPT 7、8 页), 说明 $4+5$ 的算法过程.
+\end{prob}
+\begin{sol}
+    加法的两态转移矩阵如下:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|cc|}
+        \hline
+        \multirow{2}{*}{状态} & \multicolumn{2}{c|}{扫描到的符号} \\ \cline{2-3} 
+         & \multicolumn{1}{c|}{1} & 0 \\ \hline
+        $S_1$ & \multicolumn{1}{c|}{($S_2$,0;R)} & ($S_1$,0;R) \\ \hline
+        $S_2$ & \multicolumn{1}{c|}{($S_2$,1;R)} & (halt,1;R) \\ \hline
+        Halt & \multicolumn{1}{c|}{停止} & 停止 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    欲计算 $4+5$, 初始时刻在记录带上分别有 $4$ 个连续的 1 和 $5$ 个连续的 1, 两组 1 用 0 分隔开, 按照上述转移矩阵, 计算过程如下:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+        步骤序号 & 图灵机状态 & 记录带内容 (划线处代表读写头所在位置) & 跃迁方式 \\ \hline
+        0 & $S_1$ & 0 0 \uline{1} 1 1 1 0 1 1 1 1 1 0 0 & ($S_1$,1)$\rightarrow$($S_2$,0;R) \\ \hline
+        1 & $S_2$ & 0 0 0 \uline{1} 1 1 0 1 1 1 1 1 0 0 & ($S_2$,1)$\rightarrow$($S_2$,1;R) \\ \hline
+        2 & $S_2$ & 0 0 0 1 \uline{1} 1 0 1 1 1 1 1 0 0 & ($S_2$,1)$\rightarrow$($S_2$,1;R) \\ \hline
+        3 & $S_2$ & 0 0 0 1 1 \uline{1} 0 1 1 1 1 1 0 0 & ($S_2$,1)$\rightarrow$($S_2$,1;R) \\ \hline
+        4 & $S_2$ & 0 0 0 1 1 1 \uline{0} 1 1 1 1 1 0 0 & ($S_2$,0)$\rightarrow$(halt,1;R) \\ \hline
+        5 & Halt & 0 0 0 1 1 1 \uline{1} 1 1 1 1 1 0 0 &  \\ \hline
+        \end{tabular}
+    \end{table}
+
+    最后得到记录带上有 $9$ 个连续的 1, 这说明 $4+5$ 的计算结果为 $9$.
+\end{sol}
+
+\begin{prob}
+    给出第 67-68 页中的 Pauli 算符与标准 Pauli 算符之间的关系.
+\end{prob}
+\begin{sol}
+    % Toffoli 门可视为受双比特控制的非门,
+    % \begin{align}
+    %     \text{Toffoli}=(\sigma_x)_{67}=\begin{pmatrix}
+    %         0_{6\times 6}&0\\
+    %         0&\sigma_x
+    %     \end{pmatrix}.
+    % \end{align}
+    % 利用基对换操作, 可得
+    % \begin{align}
+    %     \sigma_{mn}=P(\sigma_x)
+    % \end{align}
+    % 其中
+    % \begin{align}
+    %     P=(6m)(7n),
+    % \end{align}
+    % 即将第 $6$ 行与第 $m$ 行交换, 第 $7$ 行与第 $n$ 行交换.
+
+    % 利用 $\sigma_x$ 型算符的对易得 $\sigma_y$ 型算符:
+    % \begin{align}
+    %     [(\sigma_x)_{nm},(\sigma_x)_{mk}]=i(\sigma_y)_{mk}.
+    % \end{align}
+    % 而 $\sigma_y$ 型算符之间可通过基对换操作相互转化.
+    % 以 $(\sigma_y)_{57}$ 的生成为例:
+    % \begin{align}
+    %     \notag[(\sigma_x)_{56},(\sigma_x)_{57}]=&(\sigma_x)_{56}(\sigma_x)_{67}-(\sigma_x)_{67}(\sigma_x)_{56}\\
+    %     \notag
+    %     =&\begin{pmatrix}
+    %         0_{5\times 5}\\
+    %         &0&1&0\\
+    %         &1&0&0\\
+    %         &0&0&0
+    %     \end{pmatrix}\begin{pmatrix}
+    %         0_{5\times 5}\\
+    %         &0&0&0\\
+    %         &0&0&1\\
+    %         &0&1&0
+    %     \end{pmatrix}-\begin{pmatrix}
+    %         0_{5\times 5}\\
+    %         &0&0&0\\
+    %         &0&0&1\\
+    %         &0&1&0
+    %     \end{pmatrix}\begin{pmatrix}
+    %         0_{5\times 5}\\
+    %         &0&1&0\\
+    %         &1&0&0\\
+    %         &0&0&0
+    %     \end{pmatrix}\\
+    %     &=\begin{pmatrix}
+    %         0_{5\times 5}\\
+    %         &0&0&1\\
+    %         &0&0&0\\
+    %         &-1&0&0
+    %     \end{pmatrix}=i\begin{pmatrix}
+    %         0_{5\times 5}\\
+    %         &0&0&-i\\
+    %         &0&0&0\\
+    %         &i&0&0
+    %     \end{pmatrix}=i(\sigma_y)_{57}.
+    % \end{align}
+
+    % 利用 $\sigma_x$ 型算符和 $\sigma_y$ 型算符的对易得 $\sigma_z$ 型算符:
+    % \begin{align}
+    %     [(\sigma_x)_{mn},(\sigma_y)_{mn}]=i(\sigma_z)_{mn}.
+    % \end{align}
+    % 以 $(\sigma_z)_{67}$ 的生成为例:
+    % \begin{align}
+    %     \notag[(\sigma_x)_{67},(\sigma_y)_{67}]=&(\sigma_x)_{67}(\sigma_y)_{67}-(\sigma_y)_{67}(\sigma_x)_{67}\\
+    %     \notag=&\begin{pmatrix}
+    %         0_{6\times 6}\\
+    %         &0&1\\
+    %         &1&0
+    %     \end{pmatrix}\begin{pmatrix}
+    %         0_{6\times 6}\\
+    %         &0&-i\\
+    %         &i&0
+    %     \end{pmatrix}-\begin{pmatrix}
+    %         0_{6\times 6}\\
+    %         &0&-i\\
+    %         &i&0
+    %     \end{pmatrix}\begin{pmatrix}
+    %         0_{6\times 6}\\
+    %         &0&1\\
+    %         &1&0
+    %     \end{pmatrix}\\
+    %     =&\begin{pmatrix}
+    %         0_{6\times 6}\\
+    %         &2i&0\\
+    %         &0&-2i
+    %     \end{pmatrix}=2i(\sigma_z)_{67}.
+    % \end{align}
+
+    一方面, 在置零的辅助量子比特的辅助下, 显然可以利用 $1$ $(\sigma_k)_{mn}$ ($k=x,y,z$; $m,n=0,1,\cdots,7$) 实现标准 Pauli 算符.
+
+    另一方面, 系统的厄米算符均可用标准 Pauli 算符的直积展开, 即 $H=\sum_{i,j,k=0}^3a_{ijk}\sigma_i^1\otimes\sigma_j^2\otimes\sigma_k^3$, 包括 $(\sigma_k)_{mn}$.\\
+    例如, 对 $(\sigma_x)_{67}$,\\
+    \begin{align}
+        (\sigma_x)_{67}=\sum_{i,j,k=0}^3a_{ijk}\sigma_i^1\otimes\sigma_j^2\otimes\sigma_k^3,
+    \end{align}
+    其中
+    \begin{align}
+        a_{ijk}=\frac{1}{8}\tr[(\sigma_x)_{67})(\sigma_i^1\otimes\sigma_j^2\otimes\sigma_k^3)],
+    \end{align}
+    故
+    \begin{align}
+        \notag(\sigma_x)_{67}&=\frac{3}{4}I\otimes I\otimes I+\frac{1}{4}I\otimes I\otimes\sigma_x+\frac{1}{4}I\otimes\sigma_z\otimes I-\frac{1}{4}I\otimes\sigma_z\otimes\sigma_x\\
+        &+\frac{1}{4}\sigma_z\otimes I\otimes I-\frac{1}{4}\sigma_z\otimes I\otimes\sigma_x-\frac{1}{4}\sigma_z\otimes\sigma_z\otimes I+\frac{1}{4}\sigma_z\otimes\sigma_z\otimes\sigma_x.
+    \end{align}
+    进而可以利用基变换操作得到 $(\sigma_x)_{mn}$ 型算符, 利用 $(\sigma_x)_{mn}$ 间的对易可得 $(\sigma_y)_{mn}$ 型算符:
+    \begin{align}
+        [(\sigma_x)_{mn},(\sigma_x)_{nk}]=-(\sigma_y)_{mk},
+    \end{align}
+    利用 $\sigma_x$ 型算符和 $\sigma_y$ 型算符的对易得 $\sigma_z$ 型算符:
+    \begin{align}
+        [(\sigma_x)_{mn},(\sigma_y)_{mn}]=2i(\sigma_z)_{mn}.
+    \end{align}
+
+    综上, $(\sigma_k)_{mn}$ 型的算符与 Pauli 可相互转化.
+\end{sol}
+
+\begin{prob}
+    按参数个数估计用 Deutsch 门逼近任意 $n$ 比特幺正变换时所需的门个数.
+\end{prob}
+\begin{sol}
+    要求用 Deutsch 门逼近任意 $n$ 比特幺正变换时所需的门个数, 等价于求对任意 $n$ 比特量子态, 利用 Deutsch 门实现 $\lvert\psi\rangle\rightarrow\lvert 1\rangle^{\otimes n}$ 所需的 Deutsch 门个数.
+
+    设 $\lvert\psi\rangle=\sum_{i=0}^{2^n-1}c_i\lvert i\rangle$. 由于利用 Deutsch 门中的 $R$ 算符, 可以实现普适的单比特幺正变换. 我们总可以利用 $n$ 量子比特 Deutsch 门得到作用于基矢 $\lvert 2^n-2\rangle,\lvert 2^n-1\rangle$ 的量子门 $U_{2^n-2,2^n-1}$, 使得
+    \begin{align}
+        U_{2^n-2,2^n-1}\lvert\psi\rangle=\sum_{i=0}^{2^n-3}c_i\lvert i\rangle+\sqrt{\abs{c_{2^n-2}}^2+\abs{c_{2^n-1}}^2}\lvert 2^n-1\rangle.
+    \end{align}
+
+    在适当的基置换操作下, 我们可以构造出适当的 $U_{i,2^n-1}$ 门, 并通过 $U=\prod_{i=0}^{2^n-1}U_{i,2^n-1}$ 的组合构造出所需的幺正变换 $U$, 使得 $U\lvert\psi\rangle=\lvert 1\rangle^{\otimes 1}$.
+
+    在上述过程中需要用到 $2^n$ 个 $n$ 量子比特 Deutsch 门和 $2^n$ 个基置换操作, 而实现每个 $n$ 量子比特 Deutsch 门需要 $O(n)$ 个 Deutsch 门级级联以及 $O(n)$ 个置零的辅助量子比特. 综上, 用 Deutsch 门逼近 $n$ 比特幺正变换时需要 $2^{2^n}$ 个门.
+\end{sol}
+\end{document}
