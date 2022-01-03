@@ -6,11 +6,39 @@
     证明两种图态定义的等价性.
 \end{prob}
 \begin{sol}
-    
+    要证明两种图态定义的等价性, 只需证明显式定义的图态是隐式定义中算符 $K_p$ ($p\in V$) 的本征值为 $1$ 的本征态.\\
+    显示定义的图态的表达式为
+    \begin{align}
+        \lvert G\rangle=S_C\lvert+\rangle_1\cdots\lvert+\rangle_n=\prod_{\{a,b\}\in E}CZ_{ab}\lvert+\rangle_1\cdots\lvert+\rangle_n.
+    \end{align}
+    隐式定义中算符
+    \begin{align}
+        K_p=\sigma_p^x\prod_{b\in N_p}\sigma_b^z.
+    \end{align}
+    将算符 $K_p$ 作用于图态 $\lvert G\rangle$ 上有
+    \begin{align}
+        K_p\lvert G\rangle=K_pS_C\lvert+\rangle_1\cdots\lvert+\rangle_n=K_p\prod_{\{a,b\}}CZ_{ab}\lvert+\rangle_1\cdots\lvert+\rangle_n.
+    \end{align}
+    由于 $CZ_{ab}$ 和 $CZ_{\mu\nu}$ 之间是可对易的且 $CZ_{ab}=\lvert 0\rangle_a\langle 0\rvert\otimes I_b+\lvert 1\rangle_a\langle 1\rvert\otimes\sigma_b^z\Longrightarrow S_C^2=I$, 从而
+    \begin{align}
+        K_p\lvert G\rangle=IK_p\lvert G\rangle=S_CS_CK_p\prod_{\{a,b\}\in E}CZ_{ab}\lvert+\rangle_1\cdots\lvert+\rangle_n=S_C\prod_{\{\mu,\nu\}}CZ_{\mu\nu}K_p\prod_{\{a,b\}\in E}CZ_{ab}\lvert+\rangle_1\cdots\lvert+\rangle_n.
+    \end{align}
+    利用算符 $CZ_{ab}$ 与 Pauli 算符之间的对易关系:
+    \begin{align}
+        CZ_{ab}\sigma_a^xCZ_{ab}=&\sigma_a^x\otimes\sigma_b^z,\\
+        CZ_{ab}\sigma_b^xCZ_{ab}=&\sigma_a^z\otimes\sigma_b^x,\\
+        CZ_{ab}\sigma_c^xCZ_{ab}=&\sigma_c^x\quad(c\neq a,b),\\
+        CZ_{ab}\sigma_i^cCZ_{ab}=&\sigma_i^z\quad\forall i,
+    \end{align}
+    无妨将 $p$ 视为某个控制比特, 则有 $CZ_{pb}\sigma_p^xCZ_{pb}=\sigma_p^x\otimes\sigma_b^z$, 得到 $\sigma_b^z$ 与 $K_p$ 中的 $\sigma_b^z$ 相消, 最终得到
+    \begin{align}
+        K_p\lvert G\rangle=S_C\sigma_p^x\lvert+\rangle_1\cdots\lvert+\rangle_n=S_C\lvert+\rangle_1\cdots\lvert+\rangle_n=\lvert G\rangle,
+    \end{align}
+    故显式定义的图态 $\lvert G\rangle$ 是隐式定义中算符 $K_p$ ($p\in V$) 的本征值为 $1$ 的本征态, 显式定义和隐式定义等价.
 \end{sol}
 
 \begin{prob}
-    证明 11 中 LC 变换后图态的形式.
+    证明 11 页中 LC 变换后图态的形式.
 \end{prob}
 \begin{sol}
     
