@@ -5,8 +5,8 @@
 \begin{prob}
     证明两种图态定义的等价性.
 \end{prob}
-\begin{sol}
-    要证明两种图态定义的等价性, 只需证明显式定义的图态是隐式定义中算符 $K_p$ ($p\in V$) 的本征值为 $1$ 的本征态.\\
+\begin{pf}
+    要证两种图态定义的等价性, 即证显式定义的图态是隐式定义中算符 $K_p$ ($p\in V$) 的本征值为 $1$ 的本征态.\\
     显示定义的图态的表达式为
     \begin{align}
         \lvert G\rangle=S_C\lvert+\rangle_1\cdots\lvert+\rangle_n=\prod_{\{a,b\}\in E}CZ_{ab}\lvert+\rangle_1\cdots\lvert+\rangle_n.
@@ -35,14 +35,95 @@
         K_p\lvert G\rangle=S_C\sigma_p^x\lvert+\rangle_1\cdots\lvert+\rangle_n=S_C\lvert+\rangle_1\cdots\lvert+\rangle_n=\lvert G\rangle,
     \end{align}
     故显式定义的图态 $\lvert G\rangle$ 是隐式定义中算符 $K_p$ ($p\in V$) 的本征值为 $1$ 的本征态, 显式定义和隐式定义等价.
-\end{sol}
+\end{pf}
 
 \begin{prob}
     证明 11 页中 LC 变换后图态的形式.
 \end{prob}
-\begin{sol}
-    
-\end{sol}
+\begin{pf}
+    要证 $U_a^{\tau}\lvert G\rangle=e^{-i\frac{\pi}{4}\sigma_a^x}\prod_{k\in N_a}e^{i\frac{\pi}{4}\sigma_k^z}\lvert G\rangle$ 是图 $\tau_a(G)$ 的图态, 即证 $U_a^{\tau}\lvert G\rangle=e^{-i\frac{\pi}{4}\sigma_a^x}\prod_{k\in N_z}e^{i\frac{\pi}{4}\sigma_k^z}\lvert G\rangle$ 是图 $\tau_a(G)$ 对应的稳定子群 $S$ 的本征值为 $1$ 的共同本征态. 设图 $G$ 中点 $p$ 对应的稳定子为 $K_p$. 简记 $U_a^{\tau}$ 为 $U_a$. 由于
+    \begin{align}
+        U_a\lvert G\rangle=U_aK_p\lvert G\rangle=U_aK_pU_a^{\dagger}U_a\lvert G\rangle=U_aK_pU_a^{\dagger}\lvert\tau_a(G)\rangle,
+    \end{align}
+    因此只需证 $U_aK_pU_a^{\dagger}$ 是图 $\tau_a(G)$ 的稳定子.
+
+    \begin{itemize}
+        \item 当 $p=a$ 时, 有
+        \begin{align}
+            U_aK_aU_a^{\dagger}=\left(e^{-i\frac{\pi}{4}\sigma_a^x}\prod_{k\in N_a}e^{i\frac{\pi}{4}\sigma_k^z}\right)\left(\sigma_a^x\prod_{j\in N_a}\sigma_j^z\right)\left(e^{-i\frac{\pi}{4}\sigma_a^x}\prod_{l\in N_a}e^{i\frac{\pi}{4}\sigma_l^z}\right)^{\dagger}.
+        \end{align}
+        利用 $e^{-i\frac{\pi}{4}\sigma_a^x}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1&1\\
+            1&-1
+        \end{pmatrix}\begin{pmatrix}
+            e^{-i\frac{\pi}{4}}&0\\
+            0&e^{i\frac{\pi}{4}}
+        \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1&1\\
+            1&-1
+        \end{pmatrix}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1&1\\
+            1&-1
+        \end{pmatrix}\begin{pmatrix}
+            \sqrt{-i}&0\\
+            0&\sqrt{i}
+        \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1&1\\
+            1&-1
+        \end{pmatrix}=\sqrt{-i\sigma_a^x}$, $e^{i\frac{\pi}{4}\sigma_k^z}=\begin{pmatrix}
+            e^{i\frac{\pi}{4}}&0\\
+            0&e^{-i\frac{\pi}{4}}
+        \end{pmatrix}=\begin{pmatrix}
+            \sqrt{i}&0\\
+            0&\sqrt{-i}
+        \end{pmatrix}=\sqrt{i\sigma_k^z}$ 以及 $\sigma_k^z$ 得
+        \begin{align}
+            U_aK_aU_a^{\dagger}=\sqrt{-i\sigma_a^x}\sigma_a^x\sqrt{i\sigma_a^x}\prod_{b\in N_a}\sqrt{i\sigma_b^z}\sigma_b^z\sqrt{-i\sigma_b^z}=\sigma_a^x\prod_{b\in N_a}\sigma_b^z=K_a,
+        \end{align}
+        局域操作 $\tau_a$ 不改变顶点 $a$ 与 $N_a$ 之间的连接关系, 故 $U_aK_aU_a^{\dagger}$ 是图 $\tau_a(G)$ 的稳定子.
+        \item 当 $p\in N_a$ 时, 算符 $K_p$ 与 $U_a$ 的支集 $\sup(K_a)$ 和 $\sup(U_a)$ 的交集为
+        \begin{align}
+            \sup(K_p)\cap\sup(U_a)=(p\cup N_p)\cap(a\cup N_a)=p\cup a\cup(N_p\cap N_a),
+        \end{align}
+        且图 $\tau_a(G)$ 在 $p$ 处的稳定子为
+        \begin{align}
+            K_p'=K_p\prod_{b\in N_a-p}\sigma_b^z=\sigma_p^x\prod_{b\in N_p}\sigma_b^z\prod_{b\in N_a-p}\sigma_b^z=\sigma_p^x\prod_{b\in N_p\cup(N_a-p)-N_p\cap N_a}\sigma_b^z,
+        \end{align}
+        因此
+        \begin{align}
+            \notag U_aK_pU_a^{\dagger}=&\left(\sqrt{-i\sigma_a^x}\prod_{k\in N_a}\sqrt{i\sigma_k^z}\right)\left(\sigma_p^x\prod_{j\in N_p}\sigma_j^z\right)\left(\sqrt{i\sigma_a^x}\prod_{l\in N_a}\sqrt{-i\sigma_l^z}\right)\\
+            \notag=&\sqrt{-i\sigma_a^x}\sigma_a^z\sqrt{i\sigma_a^x}\,\sqrt{i\sigma_p^z}\sigma_p^z\sqrt{-i\sigma_p^z}\prod_{b\in N_p\cap N_a}\sqrt{i\sigma_b^z}\sigma_b^z\sqrt{-i\sigma_b^z}\prod_{c\in N_p-(N_p\cap N_a)-a}\sigma_c^z\\
+            \notag=&(-\sigma_p^y)(-\sigma_a^y)\prod_{b\in N_p-a}\sigma_b^z\\
+            \notag=&\sigma_p^y\sigma_a^y\sigma_a^z\prod_{b\in N_p}\sigma_b^z\\
+            \notag=&\sigma_p^y\sigma_p^z\sigma_a^y\sigma_a^z\prod_{b\in N_a}\sigma_b^z\prod_{b\in N_p\cup(N_a-p)-N_p\cap N_a}\sigma_b^z\\
+            \notag=&\sigma_a^x\prod_{b\in N_a}\sigma_b^z\sigma_p^x\prod_{b\in N_p\cup(N_a-p)-N_p\cap N_a}\sigma_b^z\\
+            \notag=&K_aK_p',
+        \end{align}
+        从而
+        \begin{align}
+            U_aK_pU_a^{\dagger}\lvert\tau_a(G)\rangle=K_aK_p'\lvert\tau_a(G)\rangle=K_a\lvert\tau_a(G)\rangle,
+        \end{align}
+        由于局域操作 $\tau_a$ 不改变顶点 $a$ 与 $N_a$ 之间的连接关系, 故 $K_a$ 是图 $\tau_a(G)$ 的稳定子,
+        \begin{align}
+            U_aK_pU_a^{\dagger}\lvert\tau_a(G)\rangle=\tau_a(G)\rangle,
+        \end{align}
+        进而 $U_aK_pU_a^{\dagger}$ 是图 $\tau_a(G)$ 的稳定子.
+        \item 当 $p\neq a$ 且 $p\notin N_a$ 时, $K_p$ 与 $U_a$ 的支集 $\sup(K_p)$ 与 $\sup(U_a)$ 之间的交集为 $N_a\cap N_p$, 图 $\tau_a(G)$ 对应的稳定子为 $K_p'=K_p$, 从而
+        \begin{align}
+            \notag U_aK_pU_a^{\dagger}=&\left(\sqrt{-i\sigma_a^x}\prod_{k\in N_a}\sqrt{i\sigma_k^z}\right)\left(\sigma_p^x\prod_{j\in N_p}\sigma_j^z\right)\left(\sqrt{i\sigma_a^x}\prod_{l\in N_a}\sqrt{-i\sigma_l^z}\right)\\
+            \notag=&\prod_{b\in N_a\cap N_p}\sqrt{i\sigma_b^z}\sigma_p^x\prod_{c\in N_p}\sigma_c^z\prod_{d\in N_a\cap N_p}\sqrt{-i\sigma_d^z}\\
+            \notag=&\sigma_p^x\prod_{c\in N_p}\sigma_c^z\\
+            =&K_p=K_p',
+        \end{align}
+        进而
+        \begin{align}
+            U_aK_pU_a^{\dagger}\lvert\tau_a(G)\rangle=K_p'\lvert\tau_a(G)\rangle=\lvert\tau_a(G)\rangle,
+        \end{align}
+        故 $U_aK_pU_a^{\dagger}$ 是图 $\tau_a(G)$ 的稳定子.
+    \end{itemize}
+
+    综上, $\lvert\tau_a(G)\rangle$ 是图 $\tau_a(G)$ 的稳定子群的本征值为 $1$ 的共同本征态, 故量子态 $\lvert\tau_a(G)\rangle$ 是图 $\tau_a(G)$ 对应的图态.
+\end{pf}
 
 \begin{prob}
     推导第 12 页中的 $P_x$ 测量的结果.
