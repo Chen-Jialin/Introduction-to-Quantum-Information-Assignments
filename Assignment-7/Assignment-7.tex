@@ -129,20 +129,20 @@
     推导第 12 页中的 $P_x$ 测量的结果.
 \end{prob}
 \begin{pf}
-    由于 $\lvert G\rangle$ 为 $G$ 对应的图态, 故 $\langle G\rvert K_a\lvert G\rangle=\langle G\vert G\rangle=1$, ($p\in V$).
+    由于 $\lvert G\rangle$ 为 $G$ 对应的图态, 故 $\langle G\rvert K_p\lvert G\rangle=\langle G\vert G\rangle=1$, ($p\in V$).
 
-    稳定子算符几何 $S_a=\{K_a\mid p\in V-a\}$ 可分为两部分:
+    稳定子算符集合 $S_a=\{K_p\mid p\in V-a\}$ 可分为两部分:
     \begin{itemize}
         \item[(1)] $S_a^1$ 中算符的支集不含顶点 $a$;
         \item[(2)] $S_a^2$ 中算符的支集含顶点 $a$.
     \end{itemize}
-    若 $a\in S_a^1$, 即 $K_p$ 的支集中不包含 $a$, 则 $K_p$ 与 $a$ 上的测量操作 $P_a^{z,\pm}=\frac{1}{2}(I\pm\sigma_a^z)$ 可对易, 因此测量操作 $P_a$ 不影响 $K_a$ 的测量值, 即 $\langle G_a\rvert K_p\lvert G_a\rangle=\langle G\rvert K_p\lvert G\rangle=1$, 其中 $\lvert G_a\rangle$ 表示测量操作 $P_a$ 后 (去除测量比特) 系统的量子态.
+    若 $a\in S_a^1$, 即 $K_p$ 的支集中不包含 $a$, 则 $K_p$ 与 $a$ 上的测量操作 $P_a^{z,\pm}=\frac{1}{2}(I\pm\sigma_a^z)$ 可对易, 因此测量操作 $P_a$ 不影响 $K_p$ 的测量值, 即 $\langle G_a\rvert K_p\lvert G_a\rangle=\langle G\rvert K_p\lvert G\rangle=1$, 其中 $\lvert G_a\rangle$ 表示测量操作 $P_a$ 后 (去除测量比特 $a$) 系统的量子态.
 
-    若 $a\in S_a^2$, 即 $K_p$ 的支集中包含 $a$, $p\in N_a$, 即 $K_p$ 作用在 $a$ 上的算符为 $\sigma_a^z$. 此时,
+    若 $p\in S_a^2$, 即 $K_p$ 的支集中包含 $a$, $p\in N_a$, 即 $K_p$ 作用在 $a$ 上的算符为 $\sigma_a^z$. 此时,
     \begin{itemize}
         \item 若 $\sigma_a^z$ 的测量结果为 $1$, 则
         \begin{align}
-            K_p'\lvert G_a\rangle=\langle G\rvert K_p'\sigma_a^z\lvert G\rangle=\langle G\rvert K_p\lvert G\rangle,
+            \langle G_a\rvert K_p'\lvert G_a\rangle=\langle G\rvert K_p'\sigma_a^z\lvert G\rangle=\langle G\rvert K_p\lvert G\rangle=1,
         \end{align}
         \item 若 $\sigma_a^z$ 的测量结果为 $-1$, 则
         \begin{align}
@@ -155,14 +155,14 @@
         \langle G_a\rvert K_p'\lvert G_a\rangle=&-1\quad(p\in N_a,\text{ 测量结果为 }-1),\\
         \langle G_a\rvert K_p\lvert G_a\rangle=&1\quad(p\notin N_a).
     \end{align}
-    当比特 $a$ 上 $\sigma^z$ 的测量为 $-1$ 时, 对 $N_a$ 上的量子比特做 $\sigma^z$ 操作就可将测量后的量子态 $\lvert G_a\rangle$ 转化为标准的图态 $\lvert G_a\rangle$:
+    当比特 $a$ 上 $\sigma^z$ 的测量为 $-1$ 时, 对 $N_a$ 上的量子比特做 $\sigma^z$ 操作就可将测量后的量子态 $\lvert G_a\rangle$ 转化为标准的图态 $\lvert G-a\rangle$:
     \begin{align}
         \notag\langle G_a\rvert\prod_{b\in N_a}\sigma_b^zK_p\prod_{c\in N_a}\sigma_c^z\lvert G_a\rangle=&\langle G_a\rvert\prod_{b\in N_a}\sigma_b^z\sigma_p^x\prod_{d\in N_p}\sigma_d^z\prod_{c\in N_a}\sigma_c^z\lvert G_a\rangle=\langle G_a\rvert(-\sigma_p^x)\prod_{d\in N_p}\sigma_d^z\lvert G_a\rangle=\langle G_a\rvert(-K_p)\lvert G_a\rangle\\
         =&1\quad(p\in N_a,\text{ 测量结果为 }-1).
     \end{align}
     因此
     \begin{align}
-        P_a^{z,\pm}\lvert G\rangle=\frac{1}{\sqrt{2}}\lvert z,\pm\rangle\otimes U_a^{z,\pm}\lvert G-a\rangle,
+        P_a^{z,\pm}\lvert G\rangle=\frac{1}{\sqrt{2}}\lvert z,\pm\rangle_a\otimes U_a^{z,\pm}\lvert G-a\rangle,
     \end{align}
     其中 $U_a^{z,+}=1$, $U_a^{z,-}=\prod_{k\in N_a}\sigma_k^z$.
 
@@ -182,17 +182,17 @@
     \begin{itemize}
         \item[(1)] 当 $P_a^z$ 的测量结果为 $+1$ 时,
         \begin{align}
-            \notag(U_a^{\tau}(G))^{\dagger}P_a^{z,+}\lvert G\rangle=&(U_a^{\tau}(G))^{\dagger}\frac{1}{\sqrt{2}}\lvert z,+\rangle_a\otimes\lvert\tau_a(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}e^{i\frac{\pi}{4}\sigma_a^x}\lvert z,+\rangle\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\lvert\tau_a(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}(\lvert z,+\rangle+i\lvert z,-\rangle)\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\lvert\tau_a(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}\lvert y,+\rangle\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\lvert\tau_a(G)-a\rangle\\
-            =&\frac{1}{\sqrt{2}}\lvert y,+\rangle\otimes\prod_{k\in N_a}\sqrt{-i\sigma_k^z}\lvert\tau_a(G)-a\rangle
+            \notag(U_a^{\tau}(G))^{\dagger}P_a^{z,+}\lvert\tau_a(G)\rangle=&(U_a^{\tau}(G))^{\dagger}\frac{1}{\sqrt{2}}\lvert z,+\rangle_a\otimes\lvert\tau_a(G)-a\rangle\\
+            \notag=&\frac{1}{\sqrt{2}}e^{i\frac{\pi}{4}\sigma_a^x}\lvert z,+\rangle_a\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\lvert\tau_a(G)-a\rangle\\
+            \notag=&\frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}(\lvert z,+\rangle_a+i\lvert z,-\rangle_a)\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\lvert\tau_a(G)-a\rangle\\
+            \notag=&\frac{1}{\sqrt{2}}\lvert y,+\rangle_a\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\lvert\tau_a(G)-a\rangle\\
+            =&\frac{1}{\sqrt{2}}\lvert y,+\rangle_a\otimes\prod_{k\in N_a}\sqrt{-i\sigma_k^z}\lvert\tau_a(G)-a\rangle
         \end{align}
         \item[(2)] 当 $P_a^z$ 的测量结果为 $-1$ 时,
         \begin{align}
-            \notag(U_a^{\tau}(G))^{\dagger}P_a^{z,-}\lvert G\rangle=&(U_a^{\tau}(G))^{\dagger}\frac{1}{\sqrt{2}}\lvert z,+\rangle_a\otimes\prod_{b\in N_a}\sigma_b^z\lvert\tau_a(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}e^{i\frac{\pi}{4}\sigma_a^x}\lvert z,-\rangle\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\prod_{b\in N_a}\sigma_b^z\lvert\tau_a(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}\lvert y,+\rangle\otimes\prod_{k\in N_a}\sqrt{i\sigma_k^z}\lvert\tau_a(G)-a\rangle.
+            \notag(U_a^{\tau}(G))^{\dagger}P_a^{z,-}\lvert\tau_a(G)\rangle=&(U_a^{\tau}(G))^{\dagger}\frac{1}{\sqrt{2}}\lvert z,-\rangle_a\otimes\prod_{b\in N_a}\sigma_b^z\lvert\tau_a(G)-a\rangle\\
+            \notag=&\frac{1}{\sqrt{2}}e^{i\frac{\pi}{4}\sigma_a^x}\lvert z,-\rangle_a\otimes\prod_{k\in N_a}e^{-i\frac{\pi}{4}\sigma_k^z}\prod_{b\in N_a}\sigma_b^z\lvert\tau_a(G)-a\rangle\\
+            \notag=&\frac{1}{\sqrt{2}}\lvert y,-\rangle_a\otimes\prod_{k\in N_a}\sqrt{i\sigma_k^z}\lvert\tau_a(G)-a\rangle.
         \end{align}
         (忽略整体相位 $e^{i\pi/2}$)
     \end{itemize}
@@ -208,8 +208,8 @@
         \notag=&\left(e^{i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{c\in N_{b_0}}e^{-i\frac{\pi}{4}\sigma_c^z}\right)\frac{1}{2}(I\pm\sigma_a^y)\left(e^{-i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{c\in N_{b_0}}e^{i\frac{\pi}{4}\sigma_c^z}\right)\\
         \notag=&e^{-i\frac{\pi}{4}\sigma_a^z}\frac{1}{2}(I\pm\sigma_a^y)e^{i\frac{\pi}{4}\sigma_a^z}\\
         \notag=&\sqrt{-i\sigma_a^z}\frac{1}{2}(I\pm\sigma_a^y)\sqrt{i\sigma_a^z}\\
-        \notag=&\frac{1}{2}(I+\sqrt{-i\sigma_a^z}\sigma_a^y\sqrt{i\sigma_a^z})\\
-        =&\frac{1}{2}(I\pm\sigma_a^x)=P_a^{y,\pm}\quad b\in N_a,
+        \notag=&\frac{1}{2}(I\pm\sqrt{-i\sigma_a^z}\sigma_a^y\sqrt{i\sigma_a^z})\\
+        =&\frac{1}{2}(I\pm\sigma_a^x)=P_a^{z,\pm}\quad b_0\in N_a,
     \end{align}
     从而
     \begin{align}
@@ -219,15 +219,15 @@
         \notag=&(U_{b_0}^{\tau}(G))^{\dagger}(U_a^{\tau}(G))^{\dagger}\frac{1}{\sqrt{2}}\lvert z,\pm\rangle_a\otimes U_a^{z,\pm}\lvert\tau_a\tau_{b_0}(G)-a\rangle
     \end{align}
     \begin{itemize}
-        \item[(1)] 当测的 $P_a^z$ 的测量结果为 $+1$ 时,
+        \item[(1)] 当 $P_a^z$ 的测量结果为 $+1$ 时,
         \begin{align}
             \notag&(U_{b_0}^{\tau}(G))^{\dagger}(U_a^{\tau}(G))^{\dagger}\frac{1}{\sqrt{2}}\lvert z,+\rangle_a\otimes\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
             \notag=&\left(e^{i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{k\in N_{b_0}}e^{-i\frac{\pi}{4}\sigma_k^z}\right)\left(e^{i\frac{\pi}{4}\sigma_a^x}\prod_{j\in N_a}e^{-i\frac{\pi}{4}\sigma_j^z}\right)\frac{1}{\sqrt{2}}\lvert z,+\rangle_a\otimes\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
             \notag=&\frac{1}{\sqrt{2}}e^{-i\frac{\pi}{4}\sigma_a^z}e^{i\frac{\pi}{4}\sigma_a^x}\lvert z,+\rangle_a\otimes e^{i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{k\in N_{b_0}-a}e^{-i\frac{\pi}{4}\sigma_k^z}\prod_{j\in N_a}e^{-i\frac{\pi}{4}\sigma_j^z}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
             % TODO
             \notag=&\frac{1}{\sqrt{2}}e^{i\frac{\pi}{4}\sigma_a^y}\lvert z,+\rangle_a\otimes e^{i\frac{\pi}{4}\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^ze^{-i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{j\in N_{b_0}}e^{i\frac{\pi}{4}\sigma_j^z}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}\lvert x,+\rangle\otimes\sqrt{i\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^z\tau_{b_0}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
-            =&\frac{1}{\sqrt{2}}\lvert x,+\rangle\otimes\sqrt{i\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^z\lvert\tau_{b_0}(\tau_a\tau_{b_0}(G)-a)\rangle.
+            \notag=&\frac{1}{\sqrt{2}}\lvert x,+\rangle_a\otimes\sqrt{i\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^zU_{b_0}^{\tau}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
+            =&\frac{1}{\sqrt{2}}\lvert x,+\rangle_a\otimes\sqrt{i\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^z\lvert\tau_{b_0}(\tau_a\tau_{b_0}(G)-a)\rangle.
         \end{align}
         \item[(2)] 当 $P_a^z$ 的测量结果为 $-1$ 时,
         \begin{align}
@@ -235,7 +235,7 @@
             \notag=&\left(e^{i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{k\in N_{b_0}}e^{-i\frac{\pi}{4}\sigma_k^z}\right)\left(e^{i\frac{\pi}{4}\sigma_a^x}\prod_{j\in N_a}e^{-i\frac{\pi}{4}\sigma_j^z}\right)\frac{1}{\sqrt{2}}\lvert z,-\rangle_a\otimes\prod_{k\in N_a}\sigma_k^z\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
             % TODO
             \notag=&\frac{1}{\sqrt{2}}e^{i\frac{\pi}{4}\sigma_a^y}\lvert z,-\rangle_a\otimes e^{-i\frac{\pi}{4}\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^ze^{-i\frac{\pi}{4}\sigma_{b_0}^x}\prod_{j\in N_{b_0}}e^{i\frac{\pi}{4}\sigma_j^z}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
-            \notag=&\frac{1}{\sqrt{2}}\lvert x,-\rangle_a\otimes e^{-i\frac{\pi}{4}\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^zK_{b_0}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
+            \notag=&\frac{1}{\sqrt{2}}\lvert x,-\rangle_a\otimes e^{-i\frac{\pi}{4}\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^zU_{b_0}^{\tau}\lvert\tau_a\tau_{b_0}(G)-a\rangle\\
             =&\frac{1}{\sqrt{2}}\lvert x,-\rangle\otimes\sqrt{-i\sigma_{b_0}^y}\prod_{k\in N_a-(N_{b_0}+b_0)}\sigma_k^z\lvert\tau_{b_0}(\tau_a\tau_{b_0}(G)-a)\rangle.
         \end{align}
     \end{itemize}
@@ -250,7 +250,9 @@
     证明第 18 页中的对易过程.
 \end{prob}
 \begin{sol}
-    
+    \begin{align}
+        He^{i\alpha_4Z/2}Z^{s_4}
+    \end{align}
 \end{sol}
 
 \begin{prob}
